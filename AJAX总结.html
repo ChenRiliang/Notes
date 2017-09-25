@@ -87,7 +87,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript,CSS," />
+  <meta name="keywords" content="JavaScript,AJAX," />
 
 
 
@@ -103,18 +103,18 @@
 
 
 
-<meta name="description" content="ps：是获取样式，不是设置样式。若没有给元素设置样式值，则返回浏览器给予的默认值。 element.style只能获取写在元素标签中的style属性里的样式值，无法获取到定义在和通过加载进来的样式属性 var ele = document.getElementById(&amp;apos;ele&amp;apos;); ele.style.color;    //获取颜色 window.getComputedSt">
-<meta name="keywords" content="JavaScript,CSS">
+<meta name="description" content="ajax是什么? asynchronous javascript and xml:异步的javascript和xml。  ajax是一种用来改善用户体验的技术，其本质是利用浏览器内置的一种特殊的对象 (XMLHttpRequest)异步(即发送请求时，浏览器不会销毁当前页面，用户可以继续在当前页面做其它的操作)的向服务器发送请求,并且利用服务器返回的数据(不再是一个完整的页面，只是部分的数据，一般">
+<meta name="keywords" content="JavaScript,AJAX">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript中获取样式的原生方法小结">
-<meta property="og:url" content="http://crliang.top/2015/06/21/JS获取样式/index.html">
+<meta property="og:title" content="AJAX总结">
+<meta property="og:url" content="http://crliang.top/AJAX总结.html">
 <meta property="og:site_name" content="Chen&#39;s blog">
-<meta property="og:description" content="ps：是获取样式，不是设置样式。若没有给元素设置样式值，则返回浏览器给予的默认值。 element.style只能获取写在元素标签中的style属性里的样式值，无法获取到定义在和通过加载进来的样式属性 var ele = document.getElementById(&amp;apos;ele&amp;apos;); ele.style.color;    //获取颜色 window.getComputedSt">
+<meta property="og:description" content="ajax是什么? asynchronous javascript and xml:异步的javascript和xml。  ajax是一种用来改善用户体验的技术，其本质是利用浏览器内置的一种特殊的对象 (XMLHttpRequest)异步(即发送请求时，浏览器不会销毁当前页面，用户可以继续在当前页面做其它的操作)的向服务器发送请求,并且利用服务器返回的数据(不再是一个完整的页面，只是部分的数据，一般">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-21T13:32:41.110Z">
+<meta property="og:updated_time" content="2017-09-21T12:52:44.562Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript中获取样式的原生方法小结">
-<meta name="twitter:description" content="ps：是获取样式，不是设置样式。若没有给元素设置样式值，则返回浏览器给予的默认值。 element.style只能获取写在元素标签中的style属性里的样式值，无法获取到定义在和通过加载进来的样式属性 var ele = document.getElementById(&amp;apos;ele&amp;apos;); ele.style.color;    //获取颜色 window.getComputedSt">
+<meta name="twitter:title" content="AJAX总结">
+<meta name="twitter:description" content="ajax是什么? asynchronous javascript and xml:异步的javascript和xml。  ajax是一种用来改善用户体验的技术，其本质是利用浏览器内置的一种特殊的对象 (XMLHttpRequest)异步(即发送请求时，浏览器不会销毁当前页面，用户可以继续在当前页面做其它的操作)的向服务器发送请求,并且利用服务器返回的数据(不再是一个完整的页面，只是部分的数据，一般">
 
 
 
@@ -144,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="http://crliang.top/2015/06/21/JS获取样式/"/>
+  <link rel="canonical" href="http://crliang.top/AJAX总结.html"/>
 
 
 
 
 
-  <title>JavaScript中获取样式的原生方法小结 | Chen's blog</title>
+  <title>AJAX总结 | Chen's blog</title>
   
 
 
@@ -323,7 +323,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://crliang.top/2015/06/21/JS获取样式/">
+    <link itemprop="mainEntityOfPage" href="http://crliang.top/AJAX总结.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈日亮">
@@ -340,7 +340,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript中获取样式的原生方法小结</h1>
+          <h1 class="post-title" itemprop="name headline">AJAX总结</h1>
         
 
         <div class="post-meta">
@@ -352,8 +352,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-21T10:28:14+08:00">
-                2015-06-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-11T23:28:14+08:00">
+                2016-02-11
               </time>
             
 
@@ -394,8 +394,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2015/06/21/JS获取样式/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2015/06/21/JS获取样式/" itemprop="commentsCount"></span>
+                <a href="/AJAX总结.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="AJAX总结.html" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -403,7 +403,7 @@
 
           
           
-             <span id="/2015/06/21/JS获取样式/" class="leancloud_visitors" data-flag-title="JavaScript中获取样式的原生方法小结">
+             <span id="/AJAX总结.html" class="leancloud_visitors" data-flag-title="AJAX总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -434,53 +434,213 @@
       
 
       
-        <p>ps：是获取样式，不是设置样式。若没有给元素设置样式值，则返回浏览器给予的默认值。</p>
-<h4 id="element-style"><a href="#element-style" class="headerlink" title="element.style"></a>element.style</h4><p>只能获取写在元素标签中的style属性里的样式值，无法获取到定义在<style></style>和通过<link href="”css.css”">加载进来的样式属性</p>
-<pre><code>var ele = document.getElementById(&apos;ele&apos;);
-ele.style.color;    //获取颜色
-</code></pre><h4 id="window-getComputedStyle"><a href="#window-getComputedStyle" class="headerlink" title="window.getComputedStyle()"></a>window.getComputedStyle()</h4><p>可以获取当前元素所有最终使用的CSS属性值。</p>
-<pre><code>window.getComputedStyle(&quot;元素&quot;, &quot;伪类&quot;);
-</code></pre><ul>
-<li><p>这个方法接受两个参数：要取得计算样式的元素和一个伪元素字符串（例如“:before”） 。如果不需要伪元素信息，第二个参数可以是null。也可以通过document.defaultView.getComputedStyle(“元素”, “伪类”);来使用</p>
-<pre><code>var ele = document.getElementById(&apos;ele&apos;);
-var styles = window.getComputedStyle(ele,null);
-styles.color;  //获取颜色
-</code></pre></li>
-<li>可以通过style.length来查看浏览器默认样式的个数。IE6-8不支持该方法，需要使用后面的方法。对于Firefox和Safari，会把颜色转换成rgb格式。</li>
-</ul>
-<h4 id="element-currentStyle"><a href="#element-currentStyle" class="headerlink" title="element.currentStyle"></a>element.currentStyle</h4><p>IE 专用，返回的是元素当前应用的最终CSS属性值（包括外链CSS文件，页面中嵌入\<style>的属性等）。   </p>
-<pre><code>var ele = document.getElementById(&apos;ele&apos;);
-var styles = ele.currentStyle;
-styles.color;
-</code></pre><ul>
-<li>注意：对于综合属性border等，ie返回undefined，其他浏览器有的返回值，有的不返回，但是borderLeftWidth这样的属性是返回值的</li>
-</ul>
-<h4 id="getPropertyValue"><a href="#getPropertyValue" class="headerlink" title="getPropertyValue()"></a>getPropertyValue()</h4><p>获取CSS样式的直接属性名称</p>
-<pre><code>var ele = document.getElementById(&apos;ele&apos;);
-window.getComputedStyle(ele,null).getPropertyValue(&apos;color&apos;);
-</code></pre><ul>
-<li>注意：属性名不支持驼峰格式，IE6-8不支持该方法，需要使用下面的方法</li>
-</ul>
-<h4 id="getAttribute-：与getPropertyValue类似，有一点的差异是属性名驼峰格式"><a href="#getAttribute-：与getPropertyValue类似，有一点的差异是属性名驼峰格式" class="headerlink" title="getAttribute()：与getPropertyValue类似，有一点的差异是属性名驼峰格式"></a>getAttribute()：与getPropertyValue类似，有一点的差异是属性名驼峰格式</h4><pre><code>var test = document.getElementById(&apos;test&apos;);
-window.getComputedStyle(test, null).getPropertyValue(&quot;backgroundColor&quot;);
-</code></pre><ul>
-<li><p>注意：该方法只支持IE6-8。</p>
-</li>
-<li><p>下面的获取样式方法兼容IE、chrome、FireFox等</p>
-<pre><code>function getStyle(ele) {
-     var style = null;
+        <h1 id="ajax是什么"><a href="#ajax是什么" class="headerlink" title="ajax是什么?"></a>ajax是什么?</h1><blockquote>
+<p>asynchronous javascript and xml:异步的javascript和xml。</p>
+</blockquote>
+<p>ajax是一种用来改善用户体验的技术，其本质是利用浏览器内置的一种特殊的对象 (XMLHttpRequest)异步(即发送请求时，浏览器不会销毁当前页面，用户可以继续在当前页面做其它的操作)的向服务器发送请求,并且利用服务器返回的数据(不再是一个完整的页面，只是部分的数据，一般使用文本或者xml返回)来部分更新当前页面。使用ajax技术之后，页面无刷新，并且不打断用户的操作。</p>
+<h2 id="ajax技术的优点："><a href="#ajax技术的优点：" class="headerlink" title="ajax技术的优点："></a>ajax技术的优点：</h2><p>(1).页面无刷新</p>
+<p>(2).不打断用户的操作，用户的体验好。</p>
+<p>(3).按需获取数据，浏览器与服务器之间数据的传输量减少。</p>
+<p>(4).是一个标准技术，不需要下载任何的插件。</p>
+<p>(5).可以利用客户端(浏览器)的计算能力。</p>
+<h1 id="ajax对象"><a href="#ajax对象" class="headerlink" title="ajax对象"></a>ajax对象</h1><h2 id="如何获得ajax对象"><a href="#如何获得ajax对象" class="headerlink" title="如何获得ajax对象?"></a>如何获得ajax对象?</h2><blockquote>
+<p>XMLHttpRequest并没有标准化，要区分浏览器:</p>
+</blockquote>
+<pre><code>function getXhr(){
+      var xhr;
+if(window.XMLHttpRequest){
+      //非ie浏览器
+      xhr = new XMLHttpRequest();
+}else{
+      //ie
+      xhr = new ActiveXObject(&apos;Microsoft.XMLHttp&apos;);
+  }
+}
+</code></pre><h2 id="ajax对象的属性"><a href="#ajax对象的属性" class="headerlink" title="ajax对象的属性"></a>ajax对象的属性</h2><h3 id="onreadystatechange"><a href="#onreadystatechange" class="headerlink" title="onreadystatechange"></a>onreadystatechange</h3><p>绑订一个事件处理函数(注册监听器),当ajax对象的readyState值发生了改变(比如，从0–&gt;1)，就会产生readystatechange事件。</p>
+<h3 id="responseText"><a href="#responseText" class="headerlink" title="responseText"></a>responseText</h3><p>获得服务器返回的文本</p>
+<h3 id="responseXML"><a href="#responseXML" class="headerlink" title="responseXML"></a>responseXML</h3><p>获得服务器返回的xml数据</p>
+<h3 id="status"><a href="#status" class="headerlink" title="status"></a>status</h3><p>获得状态码</p>
+<h3 id="readyState"><a href="#readyState" class="headerlink" title="readyState"></a>readyState</h3><p>ajax对象在与服务器进行通讯时，通过readyState属性值可以获取该对象的通讯的状态，其属性有5个(0,1,2,3,4),当属性值为4时，表示ajax对象已经获得了服务器返回的所有的数据。</p>
+<pre><code>0:(未初始化)对象已建立（获得），但是尚未初始化（尚未调用open方法）
 
-    if(window.getComputedStyle) {
-         style = window.getComputedStyle(ele, null);
-     }else{
-         style = ele.currentStyle;
-     }
+1：（初始化）对象已建立，调用了open方法但尚未调用send方法。
 
-    return style;
-}        
-</code></pre></li>
-</ul>
-</style></p>
+2：（发送数据）send方法一调用。
+
+3：（数据传送中）已接收部分数据。
+
+4：（响应结束）接收了所有的数据。
+</code></pre><h2 id="ajax编程的基本步骤"><a href="#ajax编程的基本步骤" class="headerlink" title="ajax编程的基本步骤"></a>ajax编程的基本步骤</h2><h3 id="step1-先获得ajax对象"><a href="#step1-先获得ajax对象" class="headerlink" title="step1, 先获得ajax对象"></a>step1, 先获得ajax对象</h3><pre><code>var xhr = getXhr();
+</code></pre><h3 id="step2-发送请求"><a href="#step2-发送请求" class="headerlink" title="step2, 发送请求"></a>step2, 发送请求</h3><pre><code>xhr.open(请求方式,请求地址,异步还是同步);
+
+请求方式: get/post
+
+请求地址:如果是get请求，请求参数要添加到请求地址的后面。
+
+true表示异步请求 ：ajax对象发请求的同时，用户可以对当前页面做其它的操作。
+
+false表示同步请求:ajax对象发请求的同时,浏览器会锁订当前页面，用户需要等待处理完成之后，浏览器才会解除锁定，才能做下一步操作。
+</code></pre><h4 id="方式一：get请求"><a href="#方式一：get请求" class="headerlink" title="方式一：get请求"></a>方式一：get请求</h4><pre><code>xhr.open(&apos;get&apos;,&apos;check_username.do?username=zs&apos;,true);
+
+xhr.onreadystatechange=f1;
+
+xhr.send(null);
+</code></pre><h4 id="方式二：post请求"><a href="#方式二：post请求" class="headerlink" title="方式二：post请求"></a>方式二：post请求</h4><pre><code>xhr.open(&apos;post&apos;);
+</code></pre><h3 id="step3-编写服务器端的代码"><a href="#step3-编写服务器端的代码" class="headerlink" title="step3,编写服务器端的代码"></a>step3,编写服务器端的代码</h3><blockquote>
+<p>服务器端一般不需要返回完整的页面，只需要返回部分的数据，比如一个简单的字符串。</p>
+</blockquote>
+<h3 id="step4-编写监听器"><a href="#step4-编写监听器" class="headerlink" title="step4, 编写监听器"></a>step4, 编写监听器</h3><pre><code>function f1(){
+  if(xhr.readyState == 4){
+  //获得服务器返回的数据
+  var txt = xhr.responseText;
+  //dom操作
+  }
+}
+</code></pre><p><strong>eg:</strong></p>
+<pre><code>function check_username() {
+//step1，获得ajax对象
+    var xhr = getXhr();
+    document.write(xhr.readyState + &quot;&lt;br/&gt;&quot;);//0
+
+    //step2, 发请求
+    xhr.open(&apos;get&apos;, &apos;check_username.do?username=&apos; + $F(&apos;username&apos;), true);//建立连接
+    document.write(xhr.readyState + &quot;&lt;br/&gt;&quot;);//1
+    xhr.onreadystatechange = function () {//绑定事件处理函数（注册监听器）
+
+        //只有ajax对象的readyState值为4时，才能获得服务器返回的完整数据
+        document.write(xhr.readyState + &quot;&lt;br/&gt;&quot;);//依次输出2、3、4
+        if (xhr.readyState == 4) {
+            //获得服务器返回的文本数据
+            var txt = xhr.responseText;
+
+            //更新页面
+            $(&apos;username_msg&apos;).innerHTML = txt;
+        }
+    };
+    xhr.send(null);//向服务发送请求
+}
+</code></pre><blockquote>
+<p>XMLHttpRequest对象xhr通过onreadystatechange属性绑定了事件处理函数，在整个会话内，onreadystatechange属性会发生多次变化，依次从0-1-2-3-4，每一次属性值的变化都会触发绑定事件函数的执行。</p>
+</blockquote>
+<p><strong>eg:同步、异步问题：</strong></p>
+<pre><code>// 验证验证码是否正确
+function check_code() {
+    var flag = false;
+    // step1，获得ajax对象
+    var xhr = getXhr();
+    // step2, 发请求
+    var uri = &apos;check_code.do?checkcode=&apos; + $F(&apos;checkcode&apos;);
+    xhr.open(&apos;get&apos;, encodeURI(uri), false);// 建立连接
+    xhr.onreadystatechange = function () {// 绑定事件处理函数（注册监听器）
+    // 只有ajax对象的readyState值为4时，才能获得服务器返回的数据。
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                // 获得服务器返回的文本数据
+                var txt = xhr.responseText;
+                // 更新页面
+                if (txt == &quot;error&quot;) {
+                    $(&apos;checkcode_msg&apos;).innerHTML = &quot;验证码错误！&quot;;
+                    flag = false;
+                } else {
+                    $(&apos;checkcode_msg&apos;).innerHTML = &quot;验证码正确！&quot;;
+                    flag = true;
+                }
+            } else {
+                $(&apos;checkcode_msg&apos;).innerHTML = &apos;系统繁忙，验证出错&apos;;
+                flag = false;
+            }
+        }
+    };
+    $(&apos;checkcode_msg&apos;).innerHTML = &quot;正在验证......&quot;;// 当服务器响应比较慢时可以看到此提示
+    xhr.send(null);// 向服务发送请求
+    //当ajax对象向服务器发送同步请求时,
+    //浏览器不会向下执行，会等待服务器的响应。
+    //如果是异步，send后，并不会先执行绑定事件，而是先向下执行
+    //在监听事件中返回值有问题，所以没在其中返回
+    return flag;
+}
+</code></pre><blockquote>
+<p>当为异步方式时，返回的flag始终是false，flag在监听事件中被有被改变（监听事件在return之前没有执行），所以要设置为同步方式，这样在return falg之前，监听事件就会处理完毕，flag的值就会发生相应的改变。</p>
+</blockquote>
+<h1 id="ajax编程中的编码问题"><a href="#ajax编程中的编码问题" class="headerlink" title="ajax编程中的编码问题"></a>ajax编程中的编码问题</h1><h2 id="发送get请求"><a href="#发送get请求" class="headerlink" title="发送get请求:"></a>发送get请求:</h2><p>ie浏览器内置的ajax对象，对中文参数使用gbk编码，而其它浏览器(firefox,chrome)使用utf8编码,服务器端默认使用iso-8859-1去解码。</p>
+<p>解决方案:</p>
+<p><strong>step1</strong>,让服务器对get请求中的参数使用指定的编码格式进行解码。</p>
+<p>比如，对于tomcat，可以修改 conf/server.xml，只对get方式有效</p>
+<pre><code>&lt;Connector port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; 
+
+          connectionTimeout=&quot;20000&quot; 
+
+          URIEncoding=&quot;utf-8&quot;（要加入的代码）
+
+          redirectPort=&quot;8443&quot; /&gt;
+
+      &lt;!-- A &quot;Connector&quot; using the shared thread pool--&gt;
+
+     ajax经典总结
+</code></pre><p><strong>step2</strong>,对请求地址，使用encodeURI函数进行统一的编码(utf-8)</p>
+<pre><code>var uri = &apos;check_username.do?username=&apos;+ $F(&apos;username&apos;);
+
+xhr.open(&apos;get&apos;,encodeURI(uri),true);
+</code></pre><h2 id="发送post"><a href="#发送post" class="headerlink" title="发送post"></a>发送post</h2><p>如果发送方式为post，那么所有浏览器内置的ajax对象都会对请求参数使用utf-8进行编码，那么只要在服务器端设置：request.setCharacterEncoding(“utf-8”);</p>
+<h1 id="发送post请求"><a href="#发送post请求" class="headerlink" title="发送post请求"></a>发送post请求</h1><pre><code>xhr.open(&apos;post&apos;,&apos;check_username.do&apos;,true);
+
+xhr.setRequestHeader(&apos;content-type&apos;,&apos;application/x-www-form-urlencoded&apos;);
+
+xhr.onreadystatechange=f1;
+
+xhr.send(&apos;username=&apos; + $F(&apos;username&apos;));
+</code></pre><blockquote>
+<p>注意：因为按照http协议的要求，如果发送的post请求，那么请求数据包里面，应该有一个消息头 content-type。但是，ajax对象默认没有，所以，需要调用setRequestHeader方法。</p>
+</blockquote>
+<h1 id="json-javascript-object-notation"><a href="#json-javascript-object-notation" class="headerlink" title="json (javascript object notation)"></a>json (javascript object notation)</h1><h2 id="json是什么"><a href="#json是什么" class="headerlink" title="json是什么?"></a>json是什么?</h2><blockquote>
+<p>是一种轻量级的数据交换标准。</p>
+</blockquote>
+<h2 id="什么是数据交换"><a href="#什么是数据交换" class="headerlink" title="什么是数据交换?"></a>什么是数据交换?</h2><p>简单地讲，就是将要交换的数据先转换成一个与平台无关的数据格式(比如xml或者json字符串)发送给接受方，接受方再进行相应的转换。</p>
+<h2 id="轻量级"><a href="#轻量级" class="headerlink" title="轻量级"></a>轻量级</h2><p>相对于xml，json解析的速度更快，数据量更小。</p>
+<h2 id="json语法格式"><a href="#json语法格式" class="headerlink" title="json语法格式"></a>json语法格式</h2><h2 id="如何表示一个对象"><a href="#如何表示一个对象" class="headerlink" title="如何表示一个对象"></a>如何表示一个对象</h2><p>{属性名:属性值,属性名:属性值…}</p>
+<p><strong>要注意:</strong></p>
+<p> a,属性值的类型可以是string,number,null,boolean, object。</p>
+<p> b,属性名必须使用引号括起来</p>
+<p> c,属性值如果是string，也必须使用引号括起来</p>
+<h3 id="如何表示一个对象组成的数组"><a href="#如何表示一个对象组成的数组" class="headerlink" title="如何表示一个对象组成的数组"></a>如何表示一个对象组成的数组</h3><p>[{},{},{}…]</p>
+<h2 id="如何使用json做数据交换"><a href="#如何使用json做数据交换" class="headerlink" title="如何使用json做数据交换"></a>如何使用json做数据交换</h2><h3 id="java对象-java对象组成的数组或者集合-转换成对应的json字符串"><a href="#java对象-java对象组成的数组或者集合-转换成对应的json字符串" class="headerlink" title="java对象(java对象组成的数组或者集合)转换成对应的json字符串"></a>java对象(java对象组成的数组或者集合)转换成对应的json字符串</h3><p>可以从www.json.org去下载对应语言的工具。</p>
+<p>使用的json-lib中提供的两个类:</p>
+<p>JSONObject, JSONArray</p>
+<h3 id="json字符串转换成javascript对象"><a href="#json字符串转换成javascript对象" class="headerlink" title="json字符串转换成javascript对象"></a>json字符串转换成javascript对象</h3><pre><code>可以使用prototype提供的evalJSON函数。
+
+prototype.js提供了很多有用的函数:
+
+a, $(id):  document.getElementById(id);
+
+b, $F(id): document.getElementById(id).value;
+
+c,  $(id1,id2,...): 分别查找id为id1,id2...的节点，然后返回一个数组。
+
+d, strip(): 除掉字符串两端的空格。
+
+e, evalJSON():将json字符串转换成对应的javascript对象或者数 组。
+</code></pre><h1 id="ajax应用中的缓存问题"><a href="#ajax应用中的缓存问题" class="headerlink" title="ajax应用中的缓存问题:"></a>ajax应用中的缓存问题:</h1><p>当使用IE浏览器时，如果使用get方式发请求，浏览器会先缓存之前</p>
+<p>访问的数据，如果访问的地址不变，不会向服务器发请求。</p>
+<p>解决方式1:使用post方式发请求。</p>
+<p>解决方式2: 在请求地址后面添加一个随机数。</p>
+<h1 id="发送同步请求"><a href="#发送同步请求" class="headerlink" title="发送同步请求"></a>发送同步请求</h1><pre><code>xhr.open(&apos;post&apos;, &apos;check_username.do&apos;, false);
+function check_username() {
+    var xhr = getXhr();
+    xhr.open(&apos;post&apos;, &apos;show.do&apos;, true);
+    xhr.setRequestHeader(&apos;content-type&apos;, &apos;application/x-www-form-urlencoded&apos;);
+    xhr.onreadystatechange = function () {
+
+        if (xhr.readState == 4) {
+            var txt = xhr.responseText;
+            alert(txt);
+            $(&apos;username_msg&apos;).innerHTML = txt;
+        }
+
+    };
+    xhr.send(&apos;username=&apos; + $F(&apos;username&apos;));
+//当ajax对象向服务器发送同步请求时,浏览器不会向下执行，会等待服务器的响应。在完整的收到服务器返回的数据之前，浏览器便处于锁定状态，用户不可进行操作。
+}
+</code></pre>
       
     </div>
     
@@ -499,7 +659,7 @@ window.getComputedStyle(test, null).getPropertyValue(&quot;backgroundColor&quot;
           
             <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
           
-            <a href="/tags/CSS/" rel="tag"><i class="fa fa-tag"></i> CSS</a>
+            <a href="/tags/AJAX/" rel="tag"><i class="fa fa-tag"></i> AJAX</a>
           
         </div>
       
@@ -512,8 +672,8 @@ window.getComputedStyle(test, null).getPropertyValue(&quot;backgroundColor&quot;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/12/Js数组操作/" rel="next" title="JS针对Array的各种操作汇总">
-                <i class="fa fa-chevron-left"></i> JS针对Array的各种操作汇总
+              <a href="/HTTP初识.html" rel="next" title="HTTP协议">
+                <i class="fa fa-chevron-left"></i> HTTP协议
               </a>
             
           </div>
@@ -522,8 +682,8 @@ window.getComputedStyle(test, null).getPropertyValue(&quot;backgroundColor&quot;
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/23/JS选取DOM元素的方法/" rel="prev" title="选取文档元素的方法">
-                选取文档元素的方法 <i class="fa fa-chevron-right"></i>
+              <a href="/前端常见跨域解决方案（全）.html" rel="prev" title="前端常见跨域解决方案">
+                前端常见跨域解决方案 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -683,7 +843,7 @@ window.getComputedStyle(test, null).getPropertyValue(&quot;backgroundColor&quot;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#element-style"><span class="nav-number">1.</span> <span class="nav-text">element.style</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#window-getComputedStyle"><span class="nav-number">2.</span> <span class="nav-text">window.getComputedStyle()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#element-currentStyle"><span class="nav-number">3.</span> <span class="nav-text">element.currentStyle</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ajax是什么"><span class="nav-number">1.</span> <span class="nav-text">ajax是什么?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax技术的优点："><span class="nav-number">1.1.</span> <span class="nav-text">ajax技术的优点：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ajax对象"><span class="nav-number">2.</span> <span class="nav-text">ajax对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何获得ajax对象"><span class="nav-number">2.1.</span> <span class="nav-text">如何获得ajax对象?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax对象的属性"><span class="nav-number">2.2.</span> <span class="nav-text">ajax对象的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#onreadystatechange"><span class="nav-number">2.2.1.</span> <span class="nav-text">onreadystatechange</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#responseText"><span class="nav-number">2.2.2.</span> <span class="nav-text">responseText</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#responseXML"><span class="nav-number">2.2.3.</span> <span class="nav-text">responseXML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#status"><span class="nav-number">2.2.4.</span> <span class="nav-text">status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readyState"><span class="nav-number">2.2.5.</span> <span class="nav-text">readyState</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax编程的基本步骤"><span class="nav-number">2.3.</span> <span class="nav-text">ajax编程的基本步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#step1-先获得ajax对象"><span class="nav-number">2.3.1.</span> <span class="nav-text">step1, 先获得ajax对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step2-发送请求"><span class="nav-number">2.3.2.</span> <span class="nav-text">step2, 发送请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方式一：get请求"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">方式一：get请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方式二：post请求"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">方式二：post请求</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step3-编写服务器端的代码"><span class="nav-number">2.3.3.</span> <span class="nav-text">step3,编写服务器端的代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step4-编写监听器"><span class="nav-number">2.3.4.</span> <span class="nav-text">step4, 编写监听器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ajax编程中的编码问题"><span class="nav-number">3.</span> <span class="nav-text">ajax编程中的编码问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#发送get请求"><span class="nav-number">3.1.</span> <span class="nav-text">发送get请求:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送post"><span class="nav-number">3.2.</span> <span class="nav-text">发送post</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发送post请求"><span class="nav-number">4.</span> <span class="nav-text">发送post请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#json-javascript-object-notation"><span class="nav-number">5.</span> <span class="nav-text">json (javascript object notation)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#json是什么"><span class="nav-number">5.1.</span> <span class="nav-text">json是什么?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是数据交换"><span class="nav-number">5.2.</span> <span class="nav-text">什么是数据交换?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#轻量级"><span class="nav-number">5.3.</span> <span class="nav-text">轻量级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#json语法格式"><span class="nav-number">5.4.</span> <span class="nav-text">json语法格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何表示一个对象"><span class="nav-number">5.5.</span> <span class="nav-text">如何表示一个对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何表示一个对象组成的数组"><span class="nav-number">5.5.1.</span> <span class="nav-text">如何表示一个对象组成的数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用json做数据交换"><span class="nav-number">5.6.</span> <span class="nav-text">如何使用json做数据交换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java对象-java对象组成的数组或者集合-转换成对应的json字符串"><span class="nav-number">5.6.1.</span> <span class="nav-text">java对象(java对象组成的数组或者集合)转换成对应的json字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#json字符串转换成javascript对象"><span class="nav-number">5.6.2.</span> <span class="nav-text">json字符串转换成javascript对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ajax应用中的缓存问题"><span class="nav-number">6.</span> <span class="nav-text">ajax应用中的缓存问题:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发送同步请求"><span class="nav-number">7.</span> <span class="nav-text">发送同步请求</span></a></li></ol></div>
             
 
           </div>

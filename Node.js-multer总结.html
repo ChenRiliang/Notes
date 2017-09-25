@@ -87,7 +87,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript,CSS," />
+  <meta name="keywords" content="Node.js," />
 
 
 
@@ -103,18 +103,18 @@
 
 
 
-<meta name="description" content="在JavaScript中提供几种方式动态的修改样式，下面将介绍方法的使用、效果、以及缺陷。  obj.style使用DOM节点对象的style对象 function changeStyle1() {    var obj = document.getElementById(&amp;quot;btnB&amp;quot;);    obj.style.backgroundColor= &amp;quot;black&amp;q">
-<meta name="keywords" content="JavaScript,CSS">
+<meta name="description" content="multer: Multer 是一个 node.js 中间件，用于处理 multipart/form-data 类型的表单数据, 它主要用于上传文件. 它是写在 busboy 之上非常高效。  API Key                Description                    Note fieldname        Field name 由表单指定     origi">
+<meta name="keywords" content="Node.js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS动态修改css样式方法汇总">
-<meta property="og:url" content="http://crliang.top/2015/05/10/JS动态修改样式的方法/index.html">
+<meta property="og:title" content="基于express+multer的文件上传">
+<meta property="og:url" content="http://crliang.top/Node.js-multer总结.html">
 <meta property="og:site_name" content="Chen&#39;s blog">
-<meta property="og:description" content="在JavaScript中提供几种方式动态的修改样式，下面将介绍方法的使用、效果、以及缺陷。  obj.style使用DOM节点对象的style对象 function changeStyle1() {    var obj = document.getElementById(&amp;quot;btnB&amp;quot;);    obj.style.backgroundColor= &amp;quot;black&amp;q">
+<meta property="og:description" content="multer: Multer 是一个 node.js 中间件，用于处理 multipart/form-data 类型的表单数据, 它主要用于上传文件. 它是写在 busboy 之上非常高效。  API Key                Description                    Note fieldname        Field name 由表单指定     origi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-21T13:37:04.836Z">
+<meta property="og:updated_time" content="2017-09-21T13:22:32.704Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS动态修改css样式方法汇总">
-<meta name="twitter:description" content="在JavaScript中提供几种方式动态的修改样式，下面将介绍方法的使用、效果、以及缺陷。  obj.style使用DOM节点对象的style对象 function changeStyle1() {    var obj = document.getElementById(&amp;quot;btnB&amp;quot;);    obj.style.backgroundColor= &amp;quot;black&amp;q">
+<meta name="twitter:title" content="基于express+multer的文件上传">
+<meta name="twitter:description" content="multer: Multer 是一个 node.js 中间件，用于处理 multipart/form-data 类型的表单数据, 它主要用于上传文件. 它是写在 busboy 之上非常高效。  API Key                Description                    Note fieldname        Field name 由表单指定     origi">
 
 
 
@@ -144,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="http://crliang.top/2015/05/10/JS动态修改样式的方法/"/>
+  <link rel="canonical" href="http://crliang.top/Node.js-multer总结.html"/>
 
 
 
 
 
-  <title>JS动态修改css样式方法汇总 | Chen's blog</title>
+  <title>基于express+multer的文件上传 | Chen's blog</title>
   
 
 
@@ -323,7 +323,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://crliang.top/2015/05/10/JS动态修改样式的方法/">
+    <link itemprop="mainEntityOfPage" href="http://crliang.top/Node.js-multer总结.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈日亮">
@@ -340,7 +340,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS动态修改css样式方法汇总</h1>
+          <h1 class="post-title" itemprop="name headline">基于express+multer的文件上传</h1>
         
 
         <div class="post-meta">
@@ -352,8 +352,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-10T20:22:12+08:00">
-                2015-05-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-03T23:22:15+08:00">
+                2016-01-03
               </time>
             
 
@@ -394,8 +394,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2015/05/10/JS动态修改样式的方法/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2015/05/10/JS动态修改样式的方法/" itemprop="commentsCount"></span>
+                <a href="/Node.js-multer总结.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="Node.js-multer总结.html" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -403,7 +403,7 @@
 
           
           
-             <span id="/2015/05/10/JS动态修改样式的方法/" class="leancloud_visitors" data-flag-title="JS动态修改css样式方法汇总">
+             <span id="/Node.js-multer总结.html" class="leancloud_visitors" data-flag-title="基于express+multer的文件上传">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -435,66 +435,147 @@
 
       
         <blockquote>
-<p>在JavaScript中提供几种方式动态的修改样式，下面将介绍方法的使用、效果、以及缺陷。</p>
+<p>multer: Multer 是一个 node.js 中间件，用于处理 multipart/form-data 类型的表单数据, 它主要用于上传文件. 它是写在 busboy 之上非常高效。</p>
 </blockquote>
-<h5 id="obj-style"><a href="#obj-style" class="headerlink" title="obj.style"></a>obj.style</h5><p>使用DOM节点对象的style对象</p>
-<pre><code>function changeStyle1() {
-   var obj = document.getElementById(&quot;btnB&quot;);
-   obj.style.backgroundColor= &quot;black&quot;;
+<pre><code>API
+Key                Description                    Note
+fieldname        Field name 由表单指定    
+originalname    用户计算机上的文件的名称    
+encoding        文件编码
+mimetype        文件的 Mime 类型
+size            文件大小（字节单位）
+destination        保存路径                     DiskStorage
+filename        保存在destination中的文件名    DiskStorage
+path            已上传文件的完整路径            DiskStorage
+buffer            一个存放了整个文件的 Buffer       MemoryStorage
 
- }
-</code></pre><blockquote>
-<p>该段代码修改btB的文字的颜色，在浏览器中打开调试工具，可以发现btB标签中多了一个属性【style=”内联式&gt;外联式。而btB的hove伪类的background-color样式写在内联式中，所以嵌入式的background-color覆盖了伪类中，这就使得鼠标放入btB上感觉不到背景颜色的变化。</p>
-</blockquote>
-<h5 id="obj-style-cssText"><a href="#obj-style-cssText" class="headerlink" title="obj.style.cssText"></a>obj.style.cssText</h5><p>使用CSSStyleDeclaration对象的cssText属性和setProperty()、removeProperty等方法</p>
-<pre><code> function changeStyle2() {
-   var obj = document.getElementById(&quot;btnB&quot;);
-   obj.style.cssText = &quot;background-color:black; display:block;color:White;
-   obj.style.removeProperty(&apos;color&apos;);
-  　   obj.style.setProperty(&apos;color&apos;, &apos;green&apos;, &apos;important&apos;);
-   obj.style.cssText = &apos;&apos;; //快速清空该规则的所有声明
-}
-属性：
-    1.cssText：当前规则的所有样式声明文本。该属性可读写，即可用来设置当前规则。
-    2.length：当前规则包含多少条声明。
-    3.parentRule：包含当前规则的那条规则，同CSSRule接口的parentRule属性。
-方法：
-    1.getPropertyPriority()方法返回指定声明的优先级，如果有的话，就是“important”，否则就是空字符串；
-    2.getPropertyValue方法返回指定声明的值；
-    3.item(index)方法返回指定位置的属性名，一般用[index]语法更直接；
-    4.removeProperty方法用于删除一条CSS属性，返回被删除的值；
-    5.setProperty方法用于设置指定的CSS属性，没有返回值;
-</code></pre><blockquote>
-<p>该段代码和【一】中的效果是一样的，缺陷也是一样。</p>
-</blockquote>
-<h5 id="obj-className"><a href="#obj-className" class="headerlink" title="obj.className"></a>obj.className</h5><p>使用obj.className来修改样式表的类名</p>
-<pre><code>function changeStyle3() {
-  var obj = document.getElementById(&quot;btnB&quot;);
-  //obj.className = &quot;style2&quot;;
-  obj.setAttribute(&quot;class&quot;, &quot;style2&quot;);
-}
-</code></pre><blockquote>
-<p>通过更改btB的css的类名的方式来更改样式，更改样式类名有两种方式。1、obj.className = “style2”;  2、 obj.setAttribute(“class”, “style2”);都是一样的效果。</p>
-<ul>
-<li>用这种方式来修改css比上面的效果要好很多。</li>
-</ul>
-</blockquote>
-<h5 id="obj-setAttribute-“href”-”css2-css”"><a href="#obj-setAttribute-“href”-”css2-css”" class="headerlink" title="obj.setAttribute(“href”,”css2.css”)"></a>obj.setAttribute(“href”,”css2.css”)</h5><p>使用更改外联的css文件，从而改变元素的css</p>
-<ul>
-<li>通过更改外联的css文件引用从而来更改btB的样式，操作很简单。代码如下：</li>
-<li><p>首先得引用外联的css文件，代码如下：</p>
-<pre><code>&lt;link href=&quot;css1.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; id=&quot;css&quot;/&gt;
+Key                    Description
+dest or storage        在哪里存储文件
+fileFilter            文件过滤器，控制哪些文件可以被接受
+limits                限制上传的数据
+</code></pre><h3 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h3><pre><code>npm install express multer multer --save
+</code></pre><h3 id="单图上传"><a href="#单图上传" class="headerlink" title="单图上传:"></a>单图上传:</h3><h4 id="前端form-html"><a href="#前端form-html" class="headerlink" title="前端form.html"></a>前端form.html</h4><pre><code>&lt;form action=&quot;/upload-single&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+    &lt;h2&gt;单图上传&lt;/h2&gt;
+    &lt;input type=&quot;file&quot; name=&quot;logo&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+&lt;/form&gt;
+</code></pre><h4 id="服务器app-js"><a href="#服务器app-js" class="headerlink" title="服务器app.js"></a>服务器app.js</h4><pre><code>var fs = require(&apos;fs&apos;);
+var express = require(&apos;express&apos;);
+var multer  = require(&apos;multer&apos;)
 
-function changeStyle4() {
-   var obj = document.getElementById(&quot;css&quot;);
-   obj.setAttribute(&quot;href&quot;,&quot;css2.css&quot;);
- }
-</code></pre></li>
+var app = express();
+var upload = multer({ storage: &apos;upload/&apos; });
+
+// 单图上传
+app.post(&apos;/upload&apos;, upload.single(&apos;logo&apos;), function(req, res, next){
+    res.send({ret_code: &apos;0&apos;});
+});
+
+app.get(&apos;/form&apos;, function(req, res, next){
+    var form = fs.readFileSync(&apos;./form.html&apos;, {encoding: &apos;utf8&apos;});
+    res.send(form);
+});
+
+app.listen(3000);
+</code></pre><h4 id="运行服务"><a href="#运行服务" class="headerlink" title="运行服务"></a>运行服务</h4><pre><code>node app.js
+你就会看到 upload 目录下多了个图片。
+</code></pre><h3 id="多图上传"><a href="#多图上传" class="headerlink" title="多图上传:"></a>多图上传:</h3><pre><code>node app.js
+将前面的 upload.single(&apos;logo&apos;) 改成 upload.array(&apos;logo&apos;, 2) 就行。表示：同时支持2张图片上传，并且 name 属性为 logo。
+
+var fs = require(&apos;fs&apos;);
+var express = require(&apos;express&apos;);
+var multer  = require(&apos;multer&apos;)
+
+var app = express();
+var upload = multer({ dest: &apos;upload/&apos; });
+
+// 多图上传
+app.post(&apos;/upload&apos;, upload.array(&apos;logo&apos;, 2), function(req, res, next){
+    res.send({ret_code: &apos;0&apos;});
+});
+
+app.get(&apos;/form&apos;, function(req, res, next){
+    var form = fs.readFileSync(&apos;./form.html&apos;, {encoding: &apos;utf8&apos;});
+    res.send(form);
+});
+
+app.listen(3000);
+
+
+form.html
+&lt;form action=&quot;/upload-multi&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+    &lt;h2&gt;多图上传&lt;/h2&gt;
+    &lt;input type=&quot;file&quot; name=&quot;logos&quot;&gt;
+    &lt;input type=&quot;file&quot; name=&quot;logos&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+&lt;/form&gt;
+</code></pre><h3 id="自定义文件上传路径、名称"><a href="#自定义文件上传路径、名称" class="headerlink" title="自定义文件上传路径、名称"></a>自定义文件上传路径、名称</h3><p>有的时候，我们想要定制文件上传的路径、名称，multer也可以方便的实现。</p>
+<h4 id="自定义本地保存的路径"><a href="#自定义本地保存的路径" class="headerlink" title="自定义本地保存的路径"></a>自定义本地保存的路径</h4><p>非常简单，比如我们想将文件上传到 my-upload 目录下，修改下 dest 配置项就行。</p>
+<pre><code>var upload = multer({ dest: &apos;upload/&apos; });
+</code></pre><p>在上面的配置下，所有资源都是保存在同个目录下。有时我们需要针对不同文件进行个性化设置，那么，可以参考下一小节的内容。</p>
+<h4 id="自定义本地保存的文件名"><a href="#自定义本地保存的文件名" class="headerlink" title="自定义本地保存的文件名"></a>自定义本地保存的文件名</h4><p>代码稍微长一点，单同样简单。multer 提供了 storage 这个参数来对资源保存的路径、文件名进行个性化设置。</p>
+<p><strong>使用注意事项如下：</strong></p>
+<ul>
+<li>destination：设置资源的保存路径。注意，如果没有这个配置项，默认会保存在 /tmp/uploads 下。此外，路径需要自己创建。</li>
+<li>filename：设置资源保存在本地的文件名。</li>
 </ul>
-<h5 id="node-classList-add-value"><a href="#node-classList-add-value" class="headerlink" title="node.classList.add(value)"></a>node.classList.add(value)</h5><p>获取和修改元素样式<br>        HTML5为元素提供了一个新的属性：classList 来实现对元素样式表的增删改查。操作如下：<br>                node.classList.add(value);     //为元素添加指定的类<br>                node.classList.contains(value);  // 判断元素是否含有指定的类，如果存在返回true<br>                node.classList.remove(value);  // 删除指定的类<br>                node.classList.toggle(value);  // 有就删除，没有就添加指定类</p>
-<h5 id="elm-setAttribute"><a href="#elm-setAttribute" class="headerlink" title="elm.setAttribute"></a>elm.setAttribute</h5><p>通过Element对象的getAttribute()、setAttribute()、removeAttribute()直接读写style属性<br>                如：elm.setAttribute(‘style’,’color:red;line-height:30px’);</p>
-<h5 id="document-styleSheets"><a href="#document-styleSheets" class="headerlink" title="document.styleSheets"></a>document.styleSheets</h5><p>利用document.styleSheets属性，返回当前页面的所有StyleSheet对象（即所有样式表），它是一个只读的类数组对象，它的元素是CSSStyleSheet对象(继承自StyleSheet对象)，该对象的属性方法如下：<br>    属性：<br>                1.cssRules类数组对象，元素是样式表中CSS规则CSSStyleRule对象；IE9以下为rules；<br>                2.disabled属性用于打开或关闭一张样式表，值为true或disabled；<br>                3.ownerNode属性返回StyleSheet对象所在的DOM节点，通常是<link>或<style>。对于那些由其他样式表引用的样式表，该属性为null；<br>                4.因为CSS的@import命令允许在样式表中加载其他样式表，就有了parentStyleSheet属性，它返回包括了当前样式表的那张样式表。如果当前样式表是顶层样式表，则该属性返回null；<br>                5.type属性返回StyleSheet对象的type值，通常是text/css；<br>                6.title属性返回StyleSheet对象的title值；<br>                7.href属性是只读属性，返回StyleSheet对象连接的样式表地址。对于内嵌的style节点，该属性等于null；<br>                8.media属性表示这个样式表是用于屏幕（screen），还是用于打印（print），或两者都适用（all），该属性只读，默认值是screen；<br>                方法：deleteRule()从样式表中删除一条规则，insertRule()向样式表中插入一条新规则，IE9以下为addRule()、removeRule()；<br>                   如： document.styleSheets[0].insertRule(‘#test:hover{color: white;}’,0);<br>        　　　　　document.styleSheets[0].deleteRule(0); //删除样式表中的第一条规则<br>        　　　　　document.styleSheets[0].cssRules[1].selectorText; //返回选择器字符串<br>        　　　　　document.styleSheets[0].cssRules[1].cssText; //返回规则字符串，含选择器<br>        　　　　　document.styleSheets[0].cssRules[1].style.border;<br>        　　　　　document.styleSheets[0].cssRules[1].style.cssText; //返回当前规则的所有样式声明字符串</p>
-</style></p>
+<pre><code>app.js :
+
+var fs = require(&apos;fs&apos;);
+var express = require(&apos;express&apos;);
+var multer  = require(&apos;multer&apos;)
+
+var app = express();
+
+var createFolder = function(folder){
+    try{
+        fs.accessSync(folder); 
+    }catch(e){
+        fs.mkdirSync(folder);
+    }  
+};
+
+var uploadFolder = &apos;./upload/&apos;;
+
+createFolder(uploadFolder);
+
+// 通过 filename 属性定制
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, uploadFolder);    // 保存的路径，备注：需要自己创建
+    },
+    filename: function (req, file, cb) {
+        // 将保存文件名设置为 字段名 + 时间戳，比如 logo-1478521468943
+        cb(null, file.fieldname + &apos;-&apos; + Date.now());  
+    }
+});
+
+// 通过 storage 选项来对 上传行为 进行定制化
+var upload = multer({ storage: storage })
+
+// 单图上传
+app.post(&apos;/upload&apos;, upload.single(&apos;logo&apos;), function(req, res, next){
+    var file = req.file;
+    res.send({ret_code: &apos;0&apos;});
+});
+
+app.get(&apos;/form&apos;, function(req, res, next){
+    var form = fs.readFileSync(&apos;./form.html&apos;, {encoding: &apos;utf8&apos;});
+    res.send(form);
+});
+
+app.listen(3000);
+
+
+
+form.html:
+
+&lt;form action=&quot;/upload&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+    &lt;h2&gt;单图上传&lt;/h2&gt;
+    &lt;input type=&quot;file&quot; name=&quot;logo&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+&lt;/form&gt;
+</code></pre>
       
     </div>
     
@@ -511,9 +592,7 @@ function changeStyle4() {
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
-          
-            <a href="/tags/CSS/" rel="tag"><i class="fa fa-tag"></i> CSS</a>
+            <a href="/tags/Node-js/" rel="tag"><i class="fa fa-tag"></i> Node.js</a>
           
         </div>
       
@@ -526,14 +605,18 @@ function changeStyle4() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/Node.js-fs总结.html" rel="next" title="Node.js模块 - fs 总结">
+                <i class="fa fa-chevron-left"></i> Node.js模块 - fs 总结
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/06/12/Js数组操作/" rel="prev" title="JS针对Array的各种操作汇总">
-                JS针对Array的各种操作汇总 <i class="fa fa-chevron-right"></i>
+              <a href="/HTTP初识.html" rel="prev" title="HTTP协议">
+                HTTP协议 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -693,7 +776,7 @@ function changeStyle4() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#obj-style"><span class="nav-number">1.</span> <span class="nav-text">obj.style</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#obj-style-cssText"><span class="nav-number">2.</span> <span class="nav-text">obj.style.cssText</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#obj-className"><span class="nav-number">3.</span> <span class="nav-text">obj.className</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#obj-setAttribute-“href”-”css2-css”"><span class="nav-number">4.</span> <span class="nav-text">obj.setAttribute(“href”,”css2.css”)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#node-classList-add-value"><span class="nav-number">5.</span> <span class="nav-text">node.classList.add(value)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#elm-setAttribute"><span class="nav-number">6.</span> <span class="nav-text">elm.setAttribute</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#document-styleSheets"><span class="nav-number">7.</span> <span class="nav-text">document.styleSheets</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装模块"><span class="nav-number">1.</span> <span class="nav-text">安装模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单图上传"><span class="nav-number">2.</span> <span class="nav-text">单图上传:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前端form-html"><span class="nav-number">2.1.</span> <span class="nav-text">前端form.html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器app-js"><span class="nav-number">2.2.</span> <span class="nav-text">服务器app.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行服务"><span class="nav-number">2.3.</span> <span class="nav-text">运行服务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多图上传"><span class="nav-number">3.</span> <span class="nav-text">多图上传:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义文件上传路径、名称"><span class="nav-number">4.</span> <span class="nav-text">自定义文件上传路径、名称</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义本地保存的路径"><span class="nav-number">4.1.</span> <span class="nav-text">自定义本地保存的路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义本地保存的文件名"><span class="nav-number">4.2.</span> <span class="nav-text">自定义本地保存的文件名</span></a></li></ol></li></ol></div>
             
 
           </div>

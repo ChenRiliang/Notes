@@ -87,7 +87,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript,DOM节点," />
+  <meta name="keywords" content="Node.js," />
 
 
 
@@ -103,18 +103,18 @@
 
 
 
-<meta name="description" content="节点包括三种：属性节点、元素节点、文本节点  元素类型    NodeType 元素         1 属性          2 文本            3 注释            8 文档            9 查询在对DOM进行增删改之前，首先要找到对应的元素。具体的查找方法如下： getElementByID()       // 得到单个节点 getElementsByT">
-<meta name="keywords" content="JavaScript,DOM节点">
+<meta name="description" content="最近接触到Node.js，现总结下fs模块。  什么是NodeJS JS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立运行的JS，NodeJS就是一个解析器。 每一种解析器都是一个运行环境，不但允许JS定义各种数据结构，进行各种计算，还允许JS使用运行环境提供的内置对象和方法做一些事情。例如运行在浏览器中的JS的用途是操作DO">
+<meta name="keywords" content="Node.js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DOM节点总结">
-<meta property="og:url" content="http://crliang.top/2015/09/19/DOM节点总结/index.html">
+<meta property="og:title" content="Node.js模块 - fs 总结">
+<meta property="og:url" content="http://crliang.top/Node.js-fs总结.html">
 <meta property="og:site_name" content="Chen&#39;s blog">
-<meta property="og:description" content="节点包括三种：属性节点、元素节点、文本节点  元素类型    NodeType 元素         1 属性          2 文本            3 注释            8 文档            9 查询在对DOM进行增删改之前，首先要找到对应的元素。具体的查找方法如下： getElementByID()       // 得到单个节点 getElementsByT">
+<meta property="og:description" content="最近接触到Node.js，现总结下fs模块。  什么是NodeJS JS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立运行的JS，NodeJS就是一个解析器。 每一种解析器都是一个运行环境，不但允许JS定义各种数据结构，进行各种计算，还允许JS使用运行环境提供的内置对象和方法做一些事情。例如运行在浏览器中的JS的用途是操作DO">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-21T12:59:00.668Z">
+<meta property="og:updated_time" content="2017-09-21T13:24:26.789Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DOM节点总结">
-<meta name="twitter:description" content="节点包括三种：属性节点、元素节点、文本节点  元素类型    NodeType 元素         1 属性          2 文本            3 注释            8 文档            9 查询在对DOM进行增删改之前，首先要找到对应的元素。具体的查找方法如下： getElementByID()       // 得到单个节点 getElementsByT">
+<meta name="twitter:title" content="Node.js模块 - fs 总结">
+<meta name="twitter:description" content="最近接触到Node.js，现总结下fs模块。  什么是NodeJS JS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立运行的JS，NodeJS就是一个解析器。 每一种解析器都是一个运行环境，不但允许JS定义各种数据结构，进行各种计算，还允许JS使用运行环境提供的内置对象和方法做一些事情。例如运行在浏览器中的JS的用途是操作DO">
 
 
 
@@ -144,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="http://crliang.top/2015/09/19/DOM节点总结/"/>
+  <link rel="canonical" href="http://crliang.top/Node.js-fs总结.html"/>
 
 
 
 
 
-  <title>DOM节点总结 | Chen's blog</title>
+  <title>Node.js模块 - fs 总结 | Chen's blog</title>
   
 
 
@@ -323,7 +323,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://crliang.top/2015/09/19/DOM节点总结/">
+    <link itemprop="mainEntityOfPage" href="http://crliang.top/Node.js-fs总结.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈日亮">
@@ -340,7 +340,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">DOM节点总结</h1>
+          <h1 class="post-title" itemprop="name headline">Node.js模块 - fs 总结</h1>
         
 
         <div class="post-meta">
@@ -352,8 +352,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-19T19:48:54+08:00">
-                2015-09-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-02T20:18:24+08:00">
+                2016-01-02
               </time>
             
 
@@ -375,8 +375,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/Node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Node.js</span>
                   </a>
                 </span>
 
@@ -394,8 +394,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2015/09/19/DOM节点总结/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2015/09/19/DOM节点总结/" itemprop="commentsCount"></span>
+                <a href="/Node.js-fs总结.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="Node.js-fs总结.html" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -403,7 +403,7 @@
 
           
           
-             <span id="/2015/09/19/DOM节点总结/" class="leancloud_visitors" data-flag-title="DOM节点总结">
+             <span id="/Node.js-fs总结.html" class="leancloud_visitors" data-flag-title="Node.js模块 - fs 总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -435,88 +435,118 @@
 
       
         <blockquote>
-<p>节点包括三种：属性节点、元素节点、文本节点</p>
+<p>最近接触到Node.js，现总结下fs模块。</p>
 </blockquote>
-<pre><code>元素类型    NodeType
-元素         1
-属性          2
-文本            3
-注释            8
-文档            9
-</code></pre><h1 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h1><p>在对DOM进行增删改之前，首先要找到对应的元素。具体的查找方法如下：</p>
-<pre><code>getElementByID()       // 得到单个节点
-getElementsByTagName()    // 得到节点数组 NodeList
-getElementsByName()      // 得到节点数组 NodeList
-</code></pre><h2 id="子节点"><a href="#子节点" class="headerlink" title="子节点"></a>子节点</h2><pre><code>Node.childNodes  //获取子节点列表NodeList; 注意换行在浏览器中被算作了text节点，如果用这种方式获取节点列表，需要进行过滤
-Node.firstChild  //返回第一个子节点
-Node.lastChild  //返回最后一个子节点
-</code></pre><h2 id="父节点"><a href="#父节点" class="headerlink" title="父节点"></a>父节点</h2><pre><code>Node.parentNode   // 返回父节点
-Node.ownerDocument  //返回祖先节点（整个document）
-</code></pre><h2 id="同胞节点"><a href="#同胞节点" class="headerlink" title="同胞节点"></a>同胞节点</h2><pre><code>Node.previousSibling    // 返回前一个节点，如果没有则返回null
-Node.nextSibling       // 返回后一个节点
-</code></pre><h1 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h1><blockquote>
-<p>新增节点首先要创建节点，然后将新建的节点插入DOM中，所以下面分别介绍创建节点和插入节点的方法，复制节点的方法也在创建节点中进行介绍。</p>
+<h3 id="什么是NodeJS"><a href="#什么是NodeJS" class="headerlink" title="什么是NodeJS"></a>什么是NodeJS</h3><blockquote>
+<p>JS是脚本语言，脚本语言都需要一个解析器才能运行。对于写在HTML页面里的JS，浏览器充当了解析器的角色。而对于需要独立运行的JS，NodeJS就是一个解析器。</p>
+<p>每一种解析器都是一个运行环境，不但允许JS定义各种数据结构，进行各种计算，还允许JS使用运行环境提供的内置对象和方法做一些事情。例如运行在浏览器中的JS的用途是操作DOM，浏览器就提供了document之类的内置对象。而运行在NodeJS中的JS的用途是操作磁盘文件或搭建HTTP服务器，NodeJS就相应提供了fs、http等内置对象。</p>
 </blockquote>
-<h2 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h2><pre><code>createElement()    // 按照指定的标签名创建一个新的元素节点
-
-document.createAttribute(attrName);
-对某个节点创建属性
-
-document.createTextNode(text);
-创建文本节点
-</code></pre><p>创建代码片段（为避免频繁刷新DOM，可以先创造代码片段，完成所有节点操作之后统一添加到DOM中）</p>
-<pre><code>createDocumentFragment()
-</code></pre><h2 id="复制节点"><a href="#复制节点" class="headerlink" title="复制节点"></a>复制节点</h2><pre><code>clonedNode = Node.cloneNode(boolean) // 只有一个参数，传入一个布尔值，true表示复制该节点下的所有子节点；false表示只复制该节点
-</code></pre><h2 id="插入节点"><a href="#插入节点" class="headerlink" title="插入节点"></a>插入节点</h2><pre><code>/*插入node*/
-parentNode.appendChild(childNode);  // 将新节点追加到子节点列表的末尾
-parentNode.insertBefore(newNode, targetNode);  //将newNode插入targetNode之前
-
-/*插入html代码*/
-node.insertAdjacentHTML(&apos;beforeBegin&apos;, html);  //在该元素之前插入代码
-node.insertAdjacentHTML(&apos;afterBegin&apos;, html);  //在该元素的第一个子元素之前插入代码
-node.insertAdjacentHTML(&apos;beforeEnd&apos;, html);  //在该元素的最后一个子元素之后插入代码
-node.insertAdjacentHTML(&apos;afterEnd&apos;, html);  //在该元素之后插入代码
-</code></pre><h1 id="替换节点"><a href="#替换节点" class="headerlink" title="替换节点"></a>替换节点</h1><pre><code>parentNode.replace(newNode, targetNode);    //使用newNode替换targetNode
-</code></pre><h2 id="删除节点-移除节点"><a href="#删除节点-移除节点" class="headerlink" title="删除节点 移除节点"></a>删除节点 移除节点</h2><pre><code>parentNode.removeChild(childNode);  // 移除目标节点
-node.parentNode.removeChild(node);    //在不清楚父节点的情况下使用
-</code></pre><h2 id="修改文本节点"><a href="#修改文本节点" class="headerlink" title="修改文本节点"></a>修改文本节点</h2><pre><code>appendData(data);
-将data加到文本节点后面
-
-deleteData(start,length);
-将从start处删除length个字符
-
-insertData(start,data)
-在start处插入字符,start的开始值是0;
-
-replaceData(start,length,data)
-在start处用data替换length个字符
-
-splitData(offset)
-在offset处分割文本节点
-
-substringData(start,length)
-从start处提取length个字符
-</code></pre><h1 id="属性节点"><a href="#属性节点" class="headerlink" title="属性节点"></a>属性节点</h1><p>操作属性节点，就是对DOM样式进行增删改查。对于行内样式、内联样式、外部样式有不同的操作方法；各种方法获得的样式也有可读可写和只读之分。</p>
-<h2 id="直接获取CSS样式"><a href="#直接获取CSS样式" class="headerlink" title="直接获取CSS样式"></a>直接获取CSS样式</h2><pre><code>node.style.color     // 可读可写
-</code></pre><h2 id="Style本身的属性和方法"><a href="#Style本身的属性和方法" class="headerlink" title="Style本身的属性和方法"></a>Style本身的属性和方法</h2><pre><code>node.style.cssText     //获取node行内样式字符串
-node.style.length      //获取行内样式个数
-node.style.item(0)     //获取指定位置的样式
-</code></pre><h2 id="获取和修改元素样式"><a href="#获取和修改元素样式" class="headerlink" title="获取和修改元素样式"></a>获取和修改元素样式</h2><pre><code>HTML5为元素提供了一个新的属性：classList 来实现对元素样式表的增删改查。操作如下：
-        node.classList.add(value);     //为元素添加指定的类
-        node.classList.contains(value);  // 判断元素是否含有指定的类，如果存在返回true
-        node.classList.remove(value);  // 删除指定的类
-        node.classList.toggle(value);  // 有就删除，没有就添加指定类
-</code></pre><h2 id="修改DOM特性的方法"><a href="#修改DOM特性的方法" class="headerlink" title="修改DOM特性的方法"></a>修改DOM特性的方法</h2><pre><code>Node.getAttribute(&apos;id&apos;)    // 获取
-Node.setAttribute(&apos;id&apos;)    // 设置
-Node.removeAttribute()     // 移除
-Node.attributes        // 获取DOM全部特性
-</code></pre><h2 id="只读方法"><a href="#只读方法" class="headerlink" title="只读方法"></a>只读方法</h2><blockquote>
-<p>getComputedStyle是window的方法。它能够获取当前元素所有最终使用的CSS属性值，但是是只读的。它有两个参数，第一个为传入的节点，第二个可以传入:hover, :blur等获取其伪类样式，如果没有则传入null。</p>
+<h3 id="fs模块："><a href="#fs模块：" class="headerlink" title="fs模块："></a>fs模块：</h3><p> <strong>NodeJS通过fs内置模块提供对文件的操作。fs模块提供的API基本上可以分为以下三类：</strong></p>
+<h4 id="文件属性读写。"><a href="#文件属性读写。" class="headerlink" title="文件属性读写。"></a>文件属性读写。</h4><p> 其中常用的有fs.stat、fs.chmod、fs.chown等等。</p>
+<h4 id="文件内容读写。"><a href="#文件内容读写。" class="headerlink" title="文件内容读写。"></a>文件内容读写。</h4><p> 其中常用的有fs.readFile、fs.readdir、fs.writeFile、fs.mkdir等等。</p>
+<h4 id="底层文件操作。"><a href="#底层文件操作。" class="headerlink" title="底层文件操作。"></a>底层文件操作。</h4><p> 其中常用的有fs.open、fs.read、fs.write、fs.close等等。</p>
+<pre><code>首先引入fs模块
+var fs = require(&apos;fs&apos;);
+</code></pre><h3 id="读写方法"><a href="#读写方法" class="headerlink" title="读写方法"></a>读写方法</h3><h4 id="fs-readFile（）-读取文件"><a href="#fs-readFile（）-读取文件" class="headerlink" title="fs.readFile（） -读取文件"></a>fs.readFile（） -读取文件</h4><blockquote>
+<p>  fs.readFile(filename,[encoding],[callback(error,data)])</p>
 </blockquote>
-<p>然而IE并不支持getComputedStyle方法，可以使用currentStyle来保持兼容性：</p>
-<pre><code>window.getComputedStyle ? window.getComputedStyle(node, null) : node.currentStyle
-</code></pre><p><br></p>
+<ul>
+<li>参数一、filename，表示读取的文件名，</li>
+<li>参数二、encoding是可选的，表示文件字符编码。<pre><code>如果没有指定文件编码，返回的是原始的缓存二进制数据，这时需要调用buffer对象的toString方法，将其转为字符串。
+</code></pre></li>
+<li><p>参数三、callback是回调函数，用于接收文件的内容。<br></p>
+<pre><code>如果不指定encoding，则callback就是第二个参数。
+回调函数提供两个参数err和data，err表示有没有错误发生，
+data是文件内容。如果指定encoding，data是一个解析后的字符串，
+否则将会以Buffer形式表示的二进制数据。
 
+read();
+function read() {
+    console.log(&apos;————————开始读取文件————————&apos;);
+    // fs.readFile 是读取整个文件的异步方法。
+    // 注意：只要后面没有加Sync，默认为异步。
+    fs.readFile(&apos;note.txt&apos;,&apos;utf-8&apos;,function (err,data) {
+        if(err) throw err;
+        console.log(data);
+        return data;
+    })
+    console.log(&apos;___________读取结束______________&apos;);
+}
+
+输出结果：打印文本内容
+
+注意：readFile方法是异步操作，所以必须小心，不要同时发起多个readFile请求。
+</code></pre></li>
+</ul>
+<h4 id="fs-writeFile（）-–写入文件"><a href="#fs-writeFile（）-–写入文件" class="headerlink" title="fs.writeFile（） –写入文件"></a>fs.writeFile（） –写入文件</h4><pre><code>var data = &apos;我是被写入的数据！&apos;;
+write(data);
+function write(data) {
+
+    fs.writeFile(&apos;writeIn.txt&apos;,data, function (error) {
+        if(error){
+            throw error;
+        }else {
+            console.log(&apos;文件已保存&apos;);
+        }
+    })
+}
+结果：目录上该文件存在则写入，不存在则创建写入
+</code></pre><h4 id="fs-appendFile-–追加内容"><a href="#fs-appendFile-–追加内容" class="headerlink" title="fs.appendFile() –追加内容"></a>fs.appendFile() –追加内容</h4><pre><code>方法一：
+append();
+function append() {
+
+    fs.appendFile(&apos;note.txt&apos;,&apos;我是新加入的内容（fs.append）&apos;,function () {
+        console.log(&apos;append success&apos;);
+    })
+}
+
+方法二：
+fs.writeFile(filename,[encoding],{flag:&apos;a&apos;}[callback(error,data)])
+append  {flag: &apos;a&apos;}  --&gt; flag,mode（权限），encodeing
+
+其实writeFile也可以实现append的功能，只要置flag为a即可。这里总结一下flag的值的含义：
+r:以读取模式打开文件
+r+：以读写模式
+w：以写入模式打开，如果不存在则创建
+w+：以读写模式打开，如果不存在则创建
+a:以追加模式打开文件，如果不存在则创建
+a+:以读取追加模式打开文件，如果文件不存在则创建。
+</code></pre><h4 id="fs-exists-–-用来判断给定路径是否存在，然后不管结果如何，都会调用回调函数。"><a href="#fs-exists-–-用来判断给定路径是否存在，然后不管结果如何，都会调用回调函数。" class="headerlink" title="fs.exists()  – 用来判断给定路径是否存在，然后不管结果如何，都会调用回调函数。"></a>fs.exists()  – 用来判断给定路径是否存在，然后不管结果如何，都会调用回调函数。</h4><pre><code>//判断文件是否存在
+fs.exists(&apos;note.txt&apos;, function (exists) {
+    console.log(&apos;note.txt :&apos;+exists);
+})
+//回调函数的参数是一个表示文件是否存在的布尔值。
+</code></pre><h4 id="mkdir-–-用于新建目录。"><a href="#mkdir-–-用于新建目录。" class="headerlink" title="mkdir() – 用于新建目录。"></a>mkdir() – 用于新建目录。</h4><pre><code>fs.mkdir(&apos;./addFile&apos;, function (err) {
+    if(err) throw err;
+    console.log(&apos;创建文件夹成功！&apos;);
+})
+mkdir接受三个参数：
+    第一个是目录名，
+    第二个是权限值 mode 目录权限（读写权限），默认0777
+    第三个是回调函数。  
+</code></pre><h4 id="fs-readdir-–读取目录-返回一个所包含的文件和子目录的数组。"><a href="#fs-readdir-–读取目录-返回一个所包含的文件和子目录的数组。" class="headerlink" title="fs.readdir() –读取目录 返回一个所包含的文件和子目录的数组。"></a>fs.readdir() –读取目录 返回一个所包含的文件和子目录的数组。</h4><pre><code>fs.readdir(&apos;./addFile&apos;, function (err, files) {
+    if(err){
+        throw err;
+    }else {
+        console.log(files);
+    }
+});
+</code></pre><h4 id="watchfile-，unwatchfile"><a href="#watchfile-，unwatchfile" class="headerlink" title="watchfile()，unwatchfile()"></a>watchfile()，unwatchfile()</h4><pre><code>--watchfile方法监听一个文件，如果该文件发生变化，就会自动触发回调函数。
+--unwatchfile方法用于解除对文件的监听。
+
+ //监控文件是否发生改变
+ fs.watchFile(&apos;writeIn.txt&apos;, function (curr, prev) {
+     console.log(&apos;the current mtime is: &apos; + curr.mtime);
+     console.log(&apos;the previous mtime was: &apos; + prev.mtime);
+ });       
+</code></pre><p>以上就是所有内容，欢迎提出错误和指导；</p>
+<h4 id="fs-stat（）-–-判断该文件是文件还是文件夹"><a href="#fs-stat（）-–-判断该文件是文件还是文件夹" class="headerlink" title="fs.stat（） – 判断该文件是文件还是文件夹"></a>fs.stat（） – 判断该文件是文件还是文件夹</h4><pre><code>fs.stat(&apos;./fs.js&apos;, function(err, stat) {
+    if (stat.isFile())
+        console.log(&apos;这是个文件&apos;);
+    else if (stat.isDirectory())
+        console.log(&apos;这是个目录&apos;);
+});
+</code></pre>
       
     </div>
     
@@ -533,9 +563,7 @@ Node.attributes        // 获取DOM全部特性
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
-          
-            <a href="/tags/DOM节点/" rel="tag"><i class="fa fa-tag"></i> DOM节点</a>
+            <a href="/tags/Node-js/" rel="tag"><i class="fa fa-tag"></i> Node.js</a>
           
         </div>
       
@@ -548,8 +576,8 @@ Node.attributes        // 获取DOM全部特性
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/11/HTML5 drag & drop 拖拽与拖放/" rel="next" title="HTML5 drag & drop 拖拽与拖放">
-                <i class="fa fa-chevron-left"></i> HTML5 drag & drop 拖拽与拖放
+              <a href="/文本节点总结.html" rel="next" title="JS文本节点总结">
+                <i class="fa fa-chevron-left"></i> JS文本节点总结
               </a>
             
           </div>
@@ -558,8 +586,8 @@ Node.attributes        // 获取DOM全部特性
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/20/Javascript函数总结/" rel="prev" title="Javascript中函数的总结">
-                Javascript中函数的总结 <i class="fa fa-chevron-right"></i>
+              <a href="/Node.js-multer总结.html" rel="prev" title="基于express+multer的文件上传">
+                基于express+multer的文件上传 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -719,7 +747,7 @@ Node.attributes        // 获取DOM全部特性
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#查询"><span class="nav-number">1.</span> <span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#子节点"><span class="nav-number">1.1.</span> <span class="nav-text">子节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#父节点"><span class="nav-number">1.2.</span> <span class="nav-text">父节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同胞节点"><span class="nav-number">1.3.</span> <span class="nav-text">同胞节点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#增加"><span class="nav-number">2.</span> <span class="nav-text">增加</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建节点"><span class="nav-number">2.1.</span> <span class="nav-text">创建节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制节点"><span class="nav-number">2.2.</span> <span class="nav-text">复制节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入节点"><span class="nav-number">2.3.</span> <span class="nav-text">插入节点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#替换节点"><span class="nav-number">3.</span> <span class="nav-text">替换节点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#删除节点-移除节点"><span class="nav-number">3.1.</span> <span class="nav-text">删除节点 移除节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文本节点"><span class="nav-number">3.2.</span> <span class="nav-text">修改文本节点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性节点"><span class="nav-number">4.</span> <span class="nav-text">属性节点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接获取CSS样式"><span class="nav-number">4.1.</span> <span class="nav-text">直接获取CSS样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Style本身的属性和方法"><span class="nav-number">4.2.</span> <span class="nav-text">Style本身的属性和方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取和修改元素样式"><span class="nav-number">4.3.</span> <span class="nav-text">获取和修改元素样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改DOM特性的方法"><span class="nav-number">4.4.</span> <span class="nav-text">修改DOM特性的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#只读方法"><span class="nav-number">4.5.</span> <span class="nav-text">只读方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是NodeJS"><span class="nav-number">1.</span> <span class="nav-text">什么是NodeJS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs模块："><span class="nav-number">2.</span> <span class="nav-text">fs模块：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件属性读写。"><span class="nav-number">2.1.</span> <span class="nav-text">文件属性读写。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件内容读写。"><span class="nav-number">2.2.</span> <span class="nav-text">文件内容读写。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#底层文件操作。"><span class="nav-number">2.3.</span> <span class="nav-text">底层文件操作。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读写方法"><span class="nav-number">3.</span> <span class="nav-text">读写方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#fs-readFile（）-读取文件"><span class="nav-number">3.1.</span> <span class="nav-text">fs.readFile（） -读取文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fs-writeFile（）-–写入文件"><span class="nav-number">3.2.</span> <span class="nav-text">fs.writeFile（） –写入文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fs-appendFile-–追加内容"><span class="nav-number">3.3.</span> <span class="nav-text">fs.appendFile() –追加内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fs-exists-–-用来判断给定路径是否存在，然后不管结果如何，都会调用回调函数。"><span class="nav-number">3.4.</span> <span class="nav-text">fs.exists()  – 用来判断给定路径是否存在，然后不管结果如何，都会调用回调函数。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mkdir-–-用于新建目录。"><span class="nav-number">3.5.</span> <span class="nav-text">mkdir() – 用于新建目录。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fs-readdir-–读取目录-返回一个所包含的文件和子目录的数组。"><span class="nav-number">3.6.</span> <span class="nav-text">fs.readdir() –读取目录 返回一个所包含的文件和子目录的数组。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#watchfile-，unwatchfile"><span class="nav-number">3.7.</span> <span class="nav-text">watchfile()，unwatchfile()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fs-stat（）-–-判断该文件是文件还是文件夹"><span class="nav-number">3.8.</span> <span class="nav-text">fs.stat（） – 判断该文件是文件还是文件夹</span></a></li></ol></li></ol></div>
             
 
           </div>

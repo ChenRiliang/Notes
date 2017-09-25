@@ -87,7 +87,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="JavaScript,DOM节点," />
 
 
 
@@ -103,18 +103,18 @@
 
 
 
-<meta name="description" content="相关重点DataTransfer 对象：退拽对象用来传递的媒介，使用一般为Event.dataTransfer。draggable    属性：就是标签元素要设置draggable=true，否则不会有效果，例如：&amp;lt;div title=&amp;quot;拖拽我&amp;quot; draggable=&amp;quot;true&amp;quot;&amp;gt;列表1&amp;lt;/div&amp;gt; ondragstart  事件：当">
-<meta name="keywords" content="JavaScript">
+<meta name="description" content="通过ID选取元素（getElementById）1）使用方法： document.getElementById(&amp;quot;domId&amp;quot;)  其中，domId为要选取元素的id属性值  2）兼容性：低于IE8版本的IE浏览器对getElementById方法的实现是不区分元素ID号的大小写的，并且会返回匹配name属性的元素。   通过名称name选取元素（getElementsByNa">
+<meta name="keywords" content="JavaScript,DOM节点">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML5 drag &amp; drop 拖拽与拖放">
-<meta property="og:url" content="http://crliang.top/2015/08/11/HTML5 drag & drop 拖拽与拖放/index.html">
+<meta property="og:title" content="选取文档元素的方法">
+<meta property="og:url" content="http://crliang.top/JS选取DOM元素的方法.html">
 <meta property="og:site_name" content="Chen&#39;s blog">
-<meta property="og:description" content="相关重点DataTransfer 对象：退拽对象用来传递的媒介，使用一般为Event.dataTransfer。draggable    属性：就是标签元素要设置draggable=true，否则不会有效果，例如：&amp;lt;div title=&amp;quot;拖拽我&amp;quot; draggable=&amp;quot;true&amp;quot;&amp;gt;列表1&amp;lt;/div&amp;gt; ondragstart  事件：当">
+<meta property="og:description" content="通过ID选取元素（getElementById）1）使用方法： document.getElementById(&amp;quot;domId&amp;quot;)  其中，domId为要选取元素的id属性值  2）兼容性：低于IE8版本的IE浏览器对getElementById方法的实现是不区分元素ID号的大小写的，并且会返回匹配name属性的元素。   通过名称name选取元素（getElementsByNa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-21T13:08:11.805Z">
+<meta property="og:updated_time" content="2017-09-21T13:27:27.909Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTML5 drag &amp; drop 拖拽与拖放">
-<meta name="twitter:description" content="相关重点DataTransfer 对象：退拽对象用来传递的媒介，使用一般为Event.dataTransfer。draggable    属性：就是标签元素要设置draggable=true，否则不会有效果，例如：&amp;lt;div title=&amp;quot;拖拽我&amp;quot; draggable=&amp;quot;true&amp;quot;&amp;gt;列表1&amp;lt;/div&amp;gt; ondragstart  事件：当">
+<meta name="twitter:title" content="选取文档元素的方法">
+<meta name="twitter:description" content="通过ID选取元素（getElementById）1）使用方法： document.getElementById(&amp;quot;domId&amp;quot;)  其中，domId为要选取元素的id属性值  2）兼容性：低于IE8版本的IE浏览器对getElementById方法的实现是不区分元素ID号的大小写的，并且会返回匹配name属性的元素。   通过名称name选取元素（getElementsByNa">
 
 
 
@@ -144,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="http://crliang.top/2015/08/11/HTML5 drag & drop 拖拽与拖放/"/>
+  <link rel="canonical" href="http://crliang.top/JS选取DOM元素的方法.html"/>
 
 
 
 
 
-  <title>HTML5 drag & drop 拖拽与拖放 | Chen's blog</title>
+  <title>选取文档元素的方法 | Chen's blog</title>
   
 
 
@@ -323,7 +323,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://crliang.top/2015/08/11/HTML5 drag & drop 拖拽与拖放/">
+    <link itemprop="mainEntityOfPage" href="http://crliang.top/JS选取DOM元素的方法.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈日亮">
@@ -340,7 +340,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HTML5 drag & drop 拖拽与拖放</h1>
+          <h1 class="post-title" itemprop="name headline">选取文档元素的方法</h1>
         
 
         <div class="post-meta">
@@ -352,8 +352,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-08-11T17:32:12+08:00">
-                2015-08-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-06-23T20:28:33+08:00">
+                2015-06-23
               </time>
             
 
@@ -394,8 +394,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2015/08/11/HTML5 drag & drop 拖拽与拖放/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2015/08/11/HTML5 drag & drop 拖拽与拖放/" itemprop="commentsCount"></span>
+                <a href="/JS选取DOM元素的方法.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="JS选取DOM元素的方法.html" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -403,7 +403,7 @@
 
           
           
-             <span id="/2015/08/11/HTML5 drag & drop 拖拽与拖放/" class="leancloud_visitors" data-flag-title="HTML5 drag & drop 拖拽与拖放">
+             <span id="/JS选取DOM元素的方法.html" class="leancloud_visitors" data-flag-title="选取文档元素的方法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -434,69 +434,34 @@
       
 
       
-        <h3 id="相关重点"><a href="#相关重点" class="headerlink" title="相关重点"></a>相关重点</h3><h4 id="DataTransfer-对象：退拽对象用来传递的媒介，使用一般为Event-dataTransfer。"><a href="#DataTransfer-对象：退拽对象用来传递的媒介，使用一般为Event-dataTransfer。" class="headerlink" title="DataTransfer 对象：退拽对象用来传递的媒介，使用一般为Event.dataTransfer。"></a>DataTransfer 对象：退拽对象用来传递的媒介，使用一般为Event.dataTransfer。</h4><h4 id="draggable-属性：就是标签元素要设置draggable-true，否则不会有效果，例如："><a href="#draggable-属性：就是标签元素要设置draggable-true，否则不会有效果，例如：" class="headerlink" title="draggable    属性：就是标签元素要设置draggable=true，否则不会有效果，例如："></a>draggable    属性：就是标签元素要设置draggable=true，否则不会有效果，例如：</h4><pre><code>&lt;div title=&quot;拖拽我&quot; draggable=&quot;true&quot;&gt;列表1&lt;/div&gt;
-</code></pre><h4 id="ondragstart-事件：当拖拽元素开始被拖拽的时候触发的事件，此事件作用在被拖曳元素上"><a href="#ondragstart-事件：当拖拽元素开始被拖拽的时候触发的事件，此事件作用在被拖曳元素上" class="headerlink" title="ondragstart  事件：当拖拽元素开始被拖拽的时候触发的事件，此事件作用在被拖曳元素上"></a>ondragstart  事件：当拖拽元素开始被拖拽的时候触发的事件，此事件作用在被拖曳元素上</h4><h4 id="ondragenter-事件：当拖曳元素进入目标元素的时候触发的事件，此事件作用在目标元素上"><a href="#ondragenter-事件：当拖曳元素进入目标元素的时候触发的事件，此事件作用在目标元素上" class="headerlink" title="ondragenter  事件：当拖曳元素进入目标元素的时候触发的事件，此事件作用在目标元素上"></a>ondragenter  事件：当拖曳元素进入目标元素的时候触发的事件，此事件作用在目标元素上</h4><h4 id="ondragover-事件：拖拽元素在目标元素上移动的时候触发的事件，此事件作用在目标元素上"><a href="#ondragover-事件：拖拽元素在目标元素上移动的时候触发的事件，此事件作用在目标元素上" class="headerlink" title="ondragover   事件：拖拽元素在目标元素上移动的时候触发的事件，此事件作用在目标元素上"></a>ondragover   事件：拖拽元素在目标元素上移动的时候触发的事件，此事件作用在目标元素上</h4><h4 id="ondrop-事件：被拖拽的元素在目标元素上同时鼠标放开触发的事件，此事件作用在目标元素上"><a href="#ondrop-事件：被拖拽的元素在目标元素上同时鼠标放开触发的事件，此事件作用在目标元素上" class="headerlink" title="ondrop       事件：被拖拽的元素在目标元素上同时鼠标放开触发的事件，此事件作用在目标元素上"></a>ondrop       事件：被拖拽的元素在目标元素上同时鼠标放开触发的事件，此事件作用在目标元素上</h4><h4 id="ondragend-事件：当拖拽完成后触发的事件，此事件作用在被拖曳元素上"><a href="#ondragend-事件：当拖拽完成后触发的事件，此事件作用在被拖曳元素上" class="headerlink" title="ondragend    事件：当拖拽完成后触发的事件，此事件作用在被拖曳元素上"></a>ondragend    事件：当拖拽完成后触发的事件，此事件作用在被拖曳元素上</h4><h4 id="Event-preventDefault-方法：阻止默认的些事件方法等执行。在ondragover中一定要执行preventDefault-，否则ondrop事件不会被触发。另外，如果是从其他应用软件或是文件中拖东西进来，尤其是图片的时候，默认的动作是显示这个图片或是相关信息，并不是真的执行drop。此时需要用用document的ondragover事件把它直接干掉。"><a href="#Event-preventDefault-方法：阻止默认的些事件方法等执行。在ondragover中一定要执行preventDefault-，否则ondrop事件不会被触发。另外，如果是从其他应用软件或是文件中拖东西进来，尤其是图片的时候，默认的动作是显示这个图片或是相关信息，并不是真的执行drop。此时需要用用document的ondragover事件把它直接干掉。" class="headerlink" title="Event.preventDefault()  方法：阻止默认的些事件方法等执行。在ondragover中一定要执行preventDefault()，否则ondrop事件不会被触发。另外，如果是从其他应用软件或是文件中拖东西进来，尤其是图片的时候，默认的动作是显示这个图片或是相关信息，并不是真的执行drop。此时需要用用document的ondragover事件把它直接干掉。"></a>Event.preventDefault()  方法：阻止默认的些事件方法等执行。在ondragover中一定要执行preventDefault()，否则ondrop事件不会被触发。另外，如果是从其他应用软件或是文件中拖东西进来，尤其是图片的时候，默认的动作是显示这个图片或是相关信息，并不是真的执行drop。此时需要用用document的ondragover事件把它直接干掉。</h4><h4 id="Event-effectAllowed-属性：就是拖拽的效果。"><a href="#Event-effectAllowed-属性：就是拖拽的效果。" class="headerlink" title="Event.effectAllowed     属性：就是拖拽的效果。"></a>Event.effectAllowed     属性：就是拖拽的效果。</h4><h3 id="相关实例"><a href="#相关实例" class="headerlink" title="相关实例"></a>相关实例</h3><blockquote>
-<p>此demo实现的效果是把右侧的列表拖动到左侧的写着果敢的“垃圾箱”三个字的div层上，此列表元素就会从这个星球上消失。</p>
-</blockquote>
-<p>其中HTML结构如下：   </p>
-<pre><code>&lt;div class=&quot;dustbin&quot;&gt;&lt;br /&gt;垃&lt;br /&gt;圾&lt;br /&gt;箱&lt;/div&gt;
-&lt;div class=&quot;dragbox&quot;&gt;
-    &lt;div class=&quot;draglist&quot; title=&quot;拖拽我&quot; draggable=&quot;true&quot;&gt;列表1&lt;/div&gt;
-    &lt;div class=&quot;draglist&quot; title=&quot;拖拽我&quot; draggable=&quot;true&quot;&gt;列表2&lt;/div&gt;
-    &lt;div class=&quot;draglist&quot; title=&quot;拖拽我&quot; draggable=&quot;true&quot;&gt;列表3&lt;/div&gt;
-    &lt;div class=&quot;draglist&quot; title=&quot;拖拽我&quot; draggable=&quot;true&quot;&gt;列表4&lt;/div&gt;
-    &lt;div class=&quot;draglist&quot; title=&quot;拖拽我&quot; draggable=&quot;true&quot;&gt;列表5&lt;/div&gt;
-    &lt;div class=&quot;draglist&quot; title=&quot;拖拽我&quot; draggable=&quot;true&quot;&gt;列表6&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;dragremind&quot;&gt;&lt;/div&gt;
-</code></pre><p>JS代码如下：</p>
-<pre><code>var $ = function(selector) {
-    /*简单的选择器方法*/
-    ...
-};
-
-var eleDustbin = $(&quot;.dustbin&quot;)[0], eleDrags = $(&quot;.draglist&quot;), lDrags = eleDrags.length, eleRemind = $(&quot;.dragremind&quot;)[0], eleDrag = null;
-for (var i=0; i&lt;lDrags; i+=1) {
-    eleDrags[i].onselectstart = function() {
-        return false;
-    };
-    eleDrags[i].ondragstart = function(ev) {
-        /*拖拽开始*/
-        //拖拽效果
-        ev.dataTransfer.effectAllowed = &quot;move&quot;;
-        ev.dataTransfer.setData(&quot;text&quot;, ev.target.innerHTML);
-        ev.dataTransfer.setDragImage(ev.target, 0, 0);
-        eleDrag = ev.target;
-        return true;
-    };
-    eleDrags[i].ondragend = function(ev) {
-        /*拖拽结束*/
-        ev.dataTransfer.clearData(&quot;text&quot;);
-        eleDrag = null;
-        return false
-    };
-}
-eleDustbin.ondragover = function(ev) {
-    /*拖拽元素在目标元素头上移动的时候*/
-    ev.preventDefault();
-    return true;
-};
-
-eleDustbin.ondragenter = function(ev) {
-    /*拖拽元素进入目标元素头上的时候*/
-    this.style.color = &quot;#ffffff&quot;;
-    return true;
-};
-eleDustbin.ondrop = function(ev) {
-    /*拖拽元素进入目标元素头上，同时鼠标松开的时候*/
-    if (eleDrag) {
-        eleRemind.innerHTML = &apos;&lt;strong&gt;&quot;&apos; + eleDrag.innerHTML + &apos;&quot;&lt;/strong&gt;被扔进了垃圾箱&apos;;
-        eleDrag.parentNode.removeChild(eleDrag);
-    }
-    this.style.color = &quot;#000000&quot;;
-    return false;
-};
-</code></pre>
+        <h4 id="通过ID选取元素（getElementById）"><a href="#通过ID选取元素（getElementById）" class="headerlink" title="通过ID选取元素（getElementById）"></a>通过ID选取元素（getElementById）</h4><p>1）使用方法：</p>
+<pre><code>document.getElementById(&quot;domId&quot;)
+</code></pre><ul>
+<li><p>其中，domId为要选取元素的id属性值</p>
+<p> 2）兼容性：低于IE8版本的IE浏览器对getElementById方法的实现是不区分元素ID号的大小写的，并且会返回匹配name属性的元素。</p>
+</li>
+</ul>
+<h4 id="通过名称name选取元素（getElementsByName）"><a href="#通过名称name选取元素（getElementsByName）" class="headerlink" title="通过名称name选取元素（getElementsByName）"></a>通过名称name选取元素（getElementsByName）</h4><h5 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h5><pre><code>document.getElementsByName(&quot;domName&quot;)
+</code></pre><ul>
+<li>其中，domName为要选取元素的name属性值</li>
+</ul>
+<h5 id="说明：a-返回值是一个nodeList集合（区别于Array）"><a href="#说明：a-返回值是一个nodeList集合（区别于Array）" class="headerlink" title="说明：a. 返回值是一个nodeList集合（区别于Array）"></a>说明：a. 返回值是一个nodeList集合（区别于Array）</h5><pre><code>b. 和ID属性不一样，name属性只在少数DOM元素中有效（form表单、表单元素、iframe、img）。这是因为name属性是为了方便提交表单数据而打造的。            
+c. 为form、img、iframe、applet、embed、object元素设置name属性时，会自动在Document对象中创建以该name属性值命名的属性。所以可以通过document.domName引用相应的dom对象
+</code></pre><h5 id="兼容性：IE中ID属性值匹配的元素也会一起返回"><a href="#兼容性：IE中ID属性值匹配的元素也会一起返回" class="headerlink" title="兼容性：IE中ID属性值匹配的元素也会一起返回"></a>兼容性：IE中ID属性值匹配的元素也会一起返回</h5><h4 id="通过标签名选取元素（getElementsByTagName）"><a href="#通过标签名选取元素（getElementsByTagName）" class="headerlink" title="通过标签名选取元素（getElementsByTagName）"></a>通过标签名选取元素（getElementsByTagName）</h4><h5 id="使用方法：-1"><a href="#使用方法：-1" class="headerlink" title="使用方法："></a>使用方法：</h5><pre><code>element.getElementsByTagName(&quot;tagName&quot;)
+</code></pre><ul>
+<li>其中，element是有效的DOM元素（包括/document）<pre><code>tagName是DOM元素的标签名
+</code></pre></li>
+</ul>
+<h5 id="说明：a-返回值是一个nodeList集合（区别于Array）-1"><a href="#说明：a-返回值是一个nodeList集合（区别于Array）-1" class="headerlink" title="说明：a. 返回值是一个nodeList集合（区别于Array）"></a>说明：a. 返回值是一个nodeList集合（区别于Array）</h5><pre><code>b. 该方法只能选取调用该方法的元素的后代元素。
+c. tagName不区分大小写
+d. 当tagName为*时，表示选取所有元素（需遵从b.规则）
+e. HTMLDocument会定义一些快捷属性来访问标签节点。如：document的images、forms、links属性指向\&lt;img&gt;、\&lt;form&gt;、\&lt;a&gt;标签元素集合，而document.body和document.head总是指向body和head标签（当未显示声明head标签时，浏览器也会创建document.head属性）
+</code></pre><h4 id="通过CSS类选取元素（getElementsByClassName）"><a href="#通过CSS类选取元素（getElementsByClassName）" class="headerlink" title="通过CSS类选取元素（getElementsByClassName）"></a>通过CSS类选取元素（getElementsByClassName）</h4><h5 id="使用方法：element-getElementsByClassName-“classNames”"><a href="#使用方法：element-getElementsByClassName-“classNames”" class="headerlink" title="使用方法：element.getElementsByClassName(“classNames”)"></a>使用方法：element.getElementsByClassName(“classNames”)</h5><pre><code>其中，element是有效的DOM元素（包括document）
+      classNames是CSS类名称的组合（多个类名之间用空格，可以是多个空格隔开），
+      如element.getElementsByClassName(&quot;class2 class1&quot;)将选取elements后代元素中同时应用了class1和class2样式的元素（样式名称不区分先后顺序）
+</code></pre><h5 id="说明：a-返回值是一个nodeList集合（区别于Array）-2"><a href="#说明：a-返回值是一个nodeList集合（区别于Array）-2" class="headerlink" title="说明：a. 返回值是一个nodeList集合（区别于Array）"></a>说明：a. 返回值是一个nodeList集合（区别于Array）</h5><pre><code>b. 该方法只能选取调用该方法的元素的后代元素。
+</code></pre><h5 id="兼容性：IE8及其以下版本的浏览器未实现getElementsByClassName方法"><a href="#兼容性：IE8及其以下版本的浏览器未实现getElementsByClassName方法" class="headerlink" title="兼容性：IE8及其以下版本的浏览器未实现getElementsByClassName方法"></a>兼容性：IE8及其以下版本的浏览器未实现getElementsByClassName方法</h5><h4 id="通过CSS选择器选取元素"><a href="#通过CSS选择器选取元素" class="headerlink" title="通过CSS选择器选取元素"></a>通过CSS选择器选取元素</h4><h5 id="使用方法：document-querySelectorAll-“selector”"><a href="#使用方法：document-querySelectorAll-“selector”" class="headerlink" title="使用方法：document.querySelectorAll(“selector”)"></a>使用方法：document.querySelectorAll(“selector”)</h5><pre><code>其中，selector为合法的CSS选择器
+</code></pre><h5 id="说明：a-返回值是一个nodeList集合（区别于Array）-3"><a href="#说明：a-返回值是一个nodeList集合（区别于Array）-3" class="headerlink" title="说明：a. 返回值是一个nodeList集合（区别于Array）"></a>说明：a. 返回值是一个nodeList集合（区别于Array）</h5><h5 id="兼容性：IE8及其以下版本的浏览器只支持CSS2标准的选择器语法"><a href="#兼容性：IE8及其以下版本的浏览器只支持CSS2标准的选择器语法" class="headerlink" title="兼容性：IE8及其以下版本的浏览器只支持CSS2标准的选择器语法"></a>兼容性：IE8及其以下版本的浏览器只支持CSS2标准的选择器语法</h5>
       
     </div>
     
@@ -515,6 +480,8 @@ eleDustbin.ondrop = function(ev) {
           
             <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
           
+            <a href="/tags/DOM节点/" rel="tag"><i class="fa fa-tag"></i> DOM节点</a>
+          
         </div>
       
 
@@ -526,8 +493,8 @@ eleDustbin.ondrop = function(ev) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/06/23/JS选取DOM元素的方法/" rel="next" title="选取文档元素的方法">
-                <i class="fa fa-chevron-left"></i> 选取文档元素的方法
+              <a href="/JS获取样式.html" rel="next" title="JavaScript中获取样式的原生方法小结">
+                <i class="fa fa-chevron-left"></i> JavaScript中获取样式的原生方法小结
               </a>
             
           </div>
@@ -536,8 +503,8 @@ eleDustbin.ondrop = function(ev) {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/19/DOM节点总结/" rel="prev" title="DOM节点总结">
-                DOM节点总结 <i class="fa fa-chevron-right"></i>
+              <a href="/HTML5 drag & drop 拖拽与拖放.html" rel="prev" title="HTML5 drag & drop 拖拽与拖放">
+                HTML5 drag & drop 拖拽与拖放 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -697,7 +664,7 @@ eleDustbin.ondrop = function(ev) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#相关重点"><span class="nav-number">1.</span> <span class="nav-text">相关重点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DataTransfer-对象：退拽对象用来传递的媒介，使用一般为Event-dataTransfer。"><span class="nav-number">1.1.</span> <span class="nav-text">DataTransfer 对象：退拽对象用来传递的媒介，使用一般为Event.dataTransfer。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#draggable-属性：就是标签元素要设置draggable-true，否则不会有效果，例如："><span class="nav-number">1.2.</span> <span class="nav-text">draggable    属性：就是标签元素要设置draggable=true，否则不会有效果，例如：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ondragstart-事件：当拖拽元素开始被拖拽的时候触发的事件，此事件作用在被拖曳元素上"><span class="nav-number">1.3.</span> <span class="nav-text">ondragstart  事件：当拖拽元素开始被拖拽的时候触发的事件，此事件作用在被拖曳元素上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ondragenter-事件：当拖曳元素进入目标元素的时候触发的事件，此事件作用在目标元素上"><span class="nav-number">1.4.</span> <span class="nav-text">ondragenter  事件：当拖曳元素进入目标元素的时候触发的事件，此事件作用在目标元素上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ondragover-事件：拖拽元素在目标元素上移动的时候触发的事件，此事件作用在目标元素上"><span class="nav-number">1.5.</span> <span class="nav-text">ondragover   事件：拖拽元素在目标元素上移动的时候触发的事件，此事件作用在目标元素上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ondrop-事件：被拖拽的元素在目标元素上同时鼠标放开触发的事件，此事件作用在目标元素上"><span class="nav-number">1.6.</span> <span class="nav-text">ondrop       事件：被拖拽的元素在目标元素上同时鼠标放开触发的事件，此事件作用在目标元素上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ondragend-事件：当拖拽完成后触发的事件，此事件作用在被拖曳元素上"><span class="nav-number">1.7.</span> <span class="nav-text">ondragend    事件：当拖拽完成后触发的事件，此事件作用在被拖曳元素上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Event-preventDefault-方法：阻止默认的些事件方法等执行。在ondragover中一定要执行preventDefault-，否则ondrop事件不会被触发。另外，如果是从其他应用软件或是文件中拖东西进来，尤其是图片的时候，默认的动作是显示这个图片或是相关信息，并不是真的执行drop。此时需要用用document的ondragover事件把它直接干掉。"><span class="nav-number">1.8.</span> <span class="nav-text">Event.preventDefault()  方法：阻止默认的些事件方法等执行。在ondragover中一定要执行preventDefault()，否则ondrop事件不会被触发。另外，如果是从其他应用软件或是文件中拖东西进来，尤其是图片的时候，默认的动作是显示这个图片或是相关信息，并不是真的执行drop。此时需要用用document的ondragover事件把它直接干掉。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Event-effectAllowed-属性：就是拖拽的效果。"><span class="nav-number">1.9.</span> <span class="nav-text">Event.effectAllowed     属性：就是拖拽的效果。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关实例"><span class="nav-number">2.</span> <span class="nav-text">相关实例</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过ID选取元素（getElementById）"><span class="nav-number">1.</span> <span class="nav-text">通过ID选取元素（getElementById）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过名称name选取元素（getElementsByName）"><span class="nav-number">2.</span> <span class="nav-text">通过名称name选取元素（getElementsByName）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用方法："><span class="nav-number">2.1.</span> <span class="nav-text">使用方法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#说明：a-返回值是一个nodeList集合（区别于Array）"><span class="nav-number">2.2.</span> <span class="nav-text">说明：a. 返回值是一个nodeList集合（区别于Array）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#兼容性：IE中ID属性值匹配的元素也会一起返回"><span class="nav-number">2.3.</span> <span class="nav-text">兼容性：IE中ID属性值匹配的元素也会一起返回</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过标签名选取元素（getElementsByTagName）"><span class="nav-number">3.</span> <span class="nav-text">通过标签名选取元素（getElementsByTagName）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用方法：-1"><span class="nav-number">3.1.</span> <span class="nav-text">使用方法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#说明：a-返回值是一个nodeList集合（区别于Array）-1"><span class="nav-number">3.2.</span> <span class="nav-text">说明：a. 返回值是一个nodeList集合（区别于Array）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过CSS类选取元素（getElementsByClassName）"><span class="nav-number">4.</span> <span class="nav-text">通过CSS类选取元素（getElementsByClassName）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用方法：element-getElementsByClassName-“classNames”"><span class="nav-number">4.1.</span> <span class="nav-text">使用方法：element.getElementsByClassName(“classNames”)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#说明：a-返回值是一个nodeList集合（区别于Array）-2"><span class="nav-number">4.2.</span> <span class="nav-text">说明：a. 返回值是一个nodeList集合（区别于Array）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#兼容性：IE8及其以下版本的浏览器未实现getElementsByClassName方法"><span class="nav-number">4.3.</span> <span class="nav-text">兼容性：IE8及其以下版本的浏览器未实现getElementsByClassName方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过CSS选择器选取元素"><span class="nav-number">5.</span> <span class="nav-text">通过CSS选择器选取元素</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用方法：document-querySelectorAll-“selector”"><span class="nav-number">5.1.</span> <span class="nav-text">使用方法：document.querySelectorAll(“selector”)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#说明：a-返回值是一个nodeList集合（区别于Array）-3"><span class="nav-number">5.2.</span> <span class="nav-text">说明：a. 返回值是一个nodeList集合（区别于Array）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#兼容性：IE8及其以下版本的浏览器只支持CSS2标准的选择器语法"><span class="nav-number">5.3.</span> <span class="nav-text">兼容性：IE8及其以下版本的浏览器只支持CSS2标准的选择器语法</span></a></li></ol></li></ol></div>
             
 
           </div>
