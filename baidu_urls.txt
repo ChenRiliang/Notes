@@ -1,3 +1,4 @@
+http://crliang.top/小程序踩坑记.html
 http://crliang.top/前端常见跨域解决方案（全）.html
 http://crliang.top/AJAX总结.html
 http://crliang.top/HTTP初识.html

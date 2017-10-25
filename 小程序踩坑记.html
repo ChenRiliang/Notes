@@ -87,7 +87,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端,程序员,web" />
+  <meta name="keywords" content="小程序," />
 
 
 
@@ -103,16 +103,18 @@
 
 
 
-<meta name="description" content="前端攻城狮，一心撸码，喜尝试新事物。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chen&#39;s blog">
-<meta property="og:url" content="http://crliang.top/tags/DOM节点/index.html">
+<meta name="description" content="初次接触小程序，并在这周完成了公司项目，在这里统一总结下关于小程序和IDE中遇到的坑:   1. 怎么对data进行赋值设置数据时不能直接进行打点赋值，而应利用 this.setData 如:this.setData({     name: &amp;apos;Joker&amp;apos; }) 2. 小程序取值 this.name 不成功小程序语法以及整体框架类似于MVVM如Vue但是又存在着差异:this">
+<meta name="keywords" content="小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序踩坑记">
+<meta property="og:url" content="http://crliang.top/小程序踩坑记.html">
 <meta property="og:site_name" content="Chen&#39;s blog">
-<meta property="og:description" content="前端攻城狮，一心撸码，喜尝试新事物。">
+<meta property="og:description" content="初次接触小程序，并在这周完成了公司项目，在这里统一总结下关于小程序和IDE中遇到的坑:   1. 怎么对data进行赋值设置数据时不能直接进行打点赋值，而应利用 this.setData 如:this.setData({     name: &amp;apos;Joker&amp;apos; }) 2. 小程序取值 this.name 不成功小程序语法以及整体框架类似于MVVM如Vue但是又存在着差异:this">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-25T08:53:10.195Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chen&#39;s blog">
-<meta name="twitter:description" content="前端攻城狮，一心撸码，喜尝试新事物。">
+<meta name="twitter:title" content="小程序踩坑记">
+<meta name="twitter:description" content="初次接触小程序，并在这周完成了公司项目，在这里统一总结下关于小程序和IDE中遇到的坑:   1. 怎么对data进行赋值设置数据时不能直接进行打点赋值，而应利用 this.setData 如:this.setData({     name: &amp;apos;Joker&amp;apos; }) 2. 小程序取值 this.name 不成功小程序语法以及整体框架类似于MVVM如Vue但是又存在着差异:this">
 
 
 
@@ -142,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="http://crliang.top/tags/DOM节点/"/>
+  <link rel="canonical" href="http://crliang.top/小程序踩坑记.html"/>
 
 
 
 
 
-  <title>标签: DOM节点 | Chen's blog</title>
+  <title>小程序踩坑记 | Chen's blog</title>
   
 
 
@@ -167,7 +169,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://github.com/ChenRiliang"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
@@ -307,110 +309,204 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>DOM节点<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://crliang.top/小程序踩坑记.html">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈日亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/文本节点总结.html" itemprop="url">
-              
-                <span itemprop="name">JS文本节点总结</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">小程序踩坑记</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-02T12:12:34+08:00"
-              content="2015-11-02" >
-          11-02
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-25T16:52:34+08:00">
+                2017-10-25
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">小程序</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/小程序踩坑记.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="小程序踩坑记.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/小程序踩坑记.html" class="leancloud_visitors" data-flag-title="小程序踩坑记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/DOM节点总结.html" itemprop="url">
-              
-                <span itemprop="name">DOM节点总结</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-09-19T19:48:54+08:00"
-              content="2015-09-19" >
-          09-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/JS选取DOM元素的方法.html" itemprop="url">
-              
-                <span itemprop="name">选取文档元素的方法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-06-23T20:28:33+08:00"
-              content="2015-06-23" >
-          06-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+        <blockquote>
+<p>初次接触小程序，并在这周完成了公司项目，在这里统一总结下关于小程序和IDE中遇到的坑:</p>
+</blockquote>
+<p><br></p>
+<h4 id="1-怎么对data进行赋值"><a href="#1-怎么对data进行赋值" class="headerlink" title="1. 怎么对data进行赋值"></a>1. 怎么对data进行赋值</h4><h4 id="设置数据时不能直接进行打点赋值，而应利用-this-setData-如"><a href="#设置数据时不能直接进行打点赋值，而应利用-this-setData-如" class="headerlink" title="设置数据时不能直接进行打点赋值，而应利用 this.setData 如:"></a>设置数据时不能直接进行打点赋值，而应利用 this.setData 如:</h4><pre><code>this.setData({
+    name: &apos;Joker&apos;
+})
+</code></pre><h4 id="2-小程序取值-this-name-不成功"><a href="#2-小程序取值-this-name-不成功" class="headerlink" title="2. 小程序取值 this.name 不成功"></a>2. 小程序取值 this.name 不成功</h4><h4 id="小程序语法以及整体框架类似于MVVM如Vue但是又存在着差异"><a href="#小程序语法以及整体框架类似于MVVM如Vue但是又存在着差异" class="headerlink" title="小程序语法以及整体框架类似于MVVM如Vue但是又存在着差异:"></a>小程序语法以及整体框架类似于MVVM如Vue但是又存在着差异:</h4><pre><code>this.data.name
+</code></pre><h4 id="3-设置跳转至tabBar页面报错"><a href="#3-设置跳转至tabBar页面报错" class="headerlink" title="3. 设置跳转至tabBar页面报错"></a>3. 设置跳转至tabBar页面报错</h4><h4 id="底栏导航栏可直接在app-json上进行设置-tabBar，并且tabBar上的页面跳转不能使用-wx-navigateTo-OBJECT-而应该使用-wx-switchTab-OBJECT"><a href="#底栏导航栏可直接在app-json上进行设置-tabBar，并且tabBar上的页面跳转不能使用-wx-navigateTo-OBJECT-而应该使用-wx-switchTab-OBJECT" class="headerlink" title="底栏导航栏可直接在app.json上进行设置 tabBar，并且tabBar上的页面跳转不能使用 wx.navigateTo(OBJECT) 而应该使用 wx.switchTab(OBJECT)"></a>底栏导航栏可直接在app.json上进行设置 tabBar，并且tabBar上的页面跳转不能使用 wx.navigateTo(OBJECT) 而应该使用 wx.switchTab(OBJECT)</h4><h4 id="4-小程序能使用-less-sass-吗-？"><a href="#4-小程序能使用-less-sass-吗-？" class="headerlink" title="4. 小程序能使用 less/sass 吗 ？"></a>4. 小程序能使用 less/sass 吗 ？</h4><h4 id="官方-IDE-暂时还没有提供-less-和-sass-等-css-预编译器支持，不建议使用。-官方-102800-已开始支持-css-的-import-语法，推荐使用，-推荐参考-weui-wxss-进行-wxss-模块化。"><a href="#官方-IDE-暂时还没有提供-less-和-sass-等-css-预编译器支持，不建议使用。-官方-102800-已开始支持-css-的-import-语法，推荐使用，-推荐参考-weui-wxss-进行-wxss-模块化。" class="headerlink" title="官方 IDE 暂时还没有提供 less 和 sass 等 css 预编译器支持，不建议使用。 官方 102800 已开始支持 css 的 @import 语法，推荐使用， 推荐参考 weui-wxss 进行 wxss 模块化。"></a>官方 IDE 暂时还没有提供 less 和 sass 等 css 预编译器支持，不建议使用。 官方 102800 已开始支持 css 的 @import 语法，推荐使用， 推荐参考 weui-wxss 进行 wxss 模块化。</h4><h4 id="5-image-高度设为-auto？"><a href="#5-image-高度设为-auto？" class="headerlink" title="5. image 高度设为 auto？"></a>5. image 高度设为 auto？</h4><h4 id="原先height-auto失效-必须指定image的高度为具体数值-不然高度为0"><a href="#原先height-auto失效-必须指定image的高度为具体数值-不然高度为0" class="headerlink" title="原先height:auto失效,必须指定image的高度为具体数值,不然高度为0."></a>原先height:auto失效,必须指定image的高度为具体数值,不然高度为0.</h4><h4 id="6-canvas-view-z-index-失效"><a href="#6-canvas-view-z-index-失效" class="headerlink" title="6. canvas/view  z-index 失效 ?"></a>6. canvas/view  z-index 失效 ?</h4><h4 id="canvas-组件是由客户端创建的原生组件，它的层级是最高的-即会导致其他标签z-index失效无法在其之上。"><a href="#canvas-组件是由客户端创建的原生组件，它的层级是最高的-即会导致其他标签z-index失效无法在其之上。" class="headerlink" title="canvas 组件是由客户端创建的原生组件，它的层级是最高的,即会导致其他标签z-index失效无法在其之上。"></a>canvas 组件是由客户端创建的原生组件，它的层级是最高的,即会导致其他标签z-index失效无法在其之上。</h4><h4 id="7-canvas-设置-tranform-缩放、旋转失效-？"><a href="#7-canvas-设置-tranform-缩放、旋转失效-？" class="headerlink" title="7. canvas 设置 tranform 缩放、旋转失效 ？"></a>7. canvas 设置 tranform 缩放、旋转失效 ？</h4><h4 id="canvas旋转缩放可用wxcanvas封装好的API-如-canvasContext-rotate-另外-css-动画对-canvas-组件无效。"><a href="#canvas旋转缩放可用wxcanvas封装好的API-如-canvasContext-rotate-另外-css-动画对-canvas-组件无效。" class="headerlink" title="canvas旋转缩放可用wxcanvas封装好的API 如:canvasContext.rotate,另外 css 动画对 canvas 组件无效。"></a>canvas旋转缩放可用wxcanvas封装好的API 如:canvasContext.rotate,另外 css 动画对 canvas 组件无效。</h4><h4 id="也可能是小case-，-后续再补充下。"><a href="#也可能是小case-，-后续再补充下。" class="headerlink" title="也可能是小case ， 后续再补充下。"></a>也可能是小case ， 后续再补充下。</h4>
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/小程序/" rel="tag"><i class="fa fa-tag"></i> 小程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/前端常见跨域解决方案（全）.html" rel="next" title="前端常见跨域解决方案">
+                <i class="fa fa-chevron-left"></i> 前端常见跨域解决方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -418,6 +514,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
 
         </div>
         
@@ -438,8 +540,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <img class="site-author-image" itemprop="image"
@@ -518,6 +629,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-怎么对data进行赋值"><span class="nav-number">1.</span> <span class="nav-text">1. 怎么对data进行赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置数据时不能直接进行打点赋值，而应利用-this-setData-如"><span class="nav-number">2.</span> <span class="nav-text">设置数据时不能直接进行打点赋值，而应利用 this.setData 如:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-小程序取值-this-name-不成功"><span class="nav-number">3.</span> <span class="nav-text">2. 小程序取值 this.name 不成功</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小程序语法以及整体框架类似于MVVM如Vue但是又存在着差异"><span class="nav-number">4.</span> <span class="nav-text">小程序语法以及整体框架类似于MVVM如Vue但是又存在着差异:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-设置跳转至tabBar页面报错"><span class="nav-number">5.</span> <span class="nav-text">3. 设置跳转至tabBar页面报错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#底栏导航栏可直接在app-json上进行设置-tabBar，并且tabBar上的页面跳转不能使用-wx-navigateTo-OBJECT-而应该使用-wx-switchTab-OBJECT"><span class="nav-number">6.</span> <span class="nav-text">底栏导航栏可直接在app.json上进行设置 tabBar，并且tabBar上的页面跳转不能使用 wx.navigateTo(OBJECT) 而应该使用 wx.switchTab(OBJECT)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-小程序能使用-less-sass-吗-？"><span class="nav-number">7.</span> <span class="nav-text">4. 小程序能使用 less/sass 吗 ？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#官方-IDE-暂时还没有提供-less-和-sass-等-css-预编译器支持，不建议使用。-官方-102800-已开始支持-css-的-import-语法，推荐使用，-推荐参考-weui-wxss-进行-wxss-模块化。"><span class="nav-number">8.</span> <span class="nav-text">官方 IDE 暂时还没有提供 less 和 sass 等 css 预编译器支持，不建议使用。 官方 102800 已开始支持 css 的 @import 语法，推荐使用， 推荐参考 weui-wxss 进行 wxss 模块化。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-image-高度设为-auto？"><span class="nav-number">9.</span> <span class="nav-text">5. image 高度设为 auto？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原先height-auto失效-必须指定image的高度为具体数值-不然高度为0"><span class="nav-number">10.</span> <span class="nav-text">原先height:auto失效,必须指定image的高度为具体数值,不然高度为0.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-canvas-view-z-index-失效"><span class="nav-number">11.</span> <span class="nav-text">6. canvas/view  z-index 失效 ?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#canvas-组件是由客户端创建的原生组件，它的层级是最高的-即会导致其他标签z-index失效无法在其之上。"><span class="nav-number">12.</span> <span class="nav-text">canvas 组件是由客户端创建的原生组件，它的层级是最高的,即会导致其他标签z-index失效无法在其之上。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-canvas-设置-tranform-缩放、旋转失效-？"><span class="nav-number">13.</span> <span class="nav-text">7. canvas 设置 tranform 缩放、旋转失效 ？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#canvas旋转缩放可用wxcanvas封装好的API-如-canvasContext-rotate-另外-css-动画对-canvas-组件无效。"><span class="nav-number">14.</span> <span class="nav-text">canvas旋转缩放可用wxcanvas封装好的API 如:canvasContext.rotate,另外 css 动画对 canvas 组件无效。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#也可能是小case-，-后续再补充下。"><span class="nav-number">15.</span> <span class="nav-text">也可能是小case ， 后续再补充下。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
