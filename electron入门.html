@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Electron,Vue," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Electron-Vue上手 由于项目需要，接触到前端桌面应用的开发，对比NWJS，Electron等框架，决定使用 Electron + Vue 进行应用的开发。  起步# 安装 vue-cli 和 脚手架样板代码 npm install -g vue-cli vue init simulatedgreg/elect">
+<meta name="keywords" content="Electron,Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Electron-Vue上手">
+<meta property="og:url" content="http://crliang.top/electron入门.html">
+<meta property="og:site_name" content="Chen&#39;s blog">
+<meta property="og:description" content="Electron-Vue上手 由于项目需要，接触到前端桌面应用的开发，对比NWJS，Electron等框架，决定使用 Electron + Vue 进行应用的开发。  起步# 安装 vue-cli 和 脚手架样板代码 npm install -g vue-cli vue init simulatedgreg/electron-vue my-project  # 安装依赖并运行你的程序 cd my-">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-28T14:27:15.144Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Electron-Vue上手">
+<meta name="twitter:description" content="Electron-Vue上手 由于项目需要，接触到前端桌面应用的开发，对比NWJS，Electron等框架，决定使用 Electron + Vue 进行应用的开发。  起步# 安装 vue-cli 和 脚手架样板代码 npm install -g vue-cli vue init simulatedgreg/electron-vue my-project  # 安装依赖并运行你的程序 cd my-">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://crliang.top/electron入门.html"/>
+
+
+
+
+
+  <title>Electron-Vue上手 | Chen's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/ChenRiliang"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://crliang.top/electron入门.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈日亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Electron-Vue上手</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T21:22:01+08:00">
+                2017-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/electron入门.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="electron入门.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/electron入门.html" class="leancloud_visitors" data-flag-title="Electron-Vue上手">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Electron-Vue上手"><a href="#Electron-Vue上手" class="headerlink" title="Electron-Vue上手"></a>Electron-Vue上手</h1><blockquote>
+<p>由于项目需要，接触到前端桌面应用的开发，对比NWJS，Electron等框架，决定使用 Electron + Vue 进行应用的开发。</p>
+</blockquote>
+<h2 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h2><pre><code># 安装 vue-cli 和 脚手架样板代码
+npm install -g vue-cli
+vue init simulatedgreg/electron-vue my-project
+
+# 安装依赖并运行你的程序
+cd my-project
+yarn # 或者 npm install
+yarn run dev # 或者 npm run dev
+</code></pre><blockquote>
+<p>出现问题 1 安装依赖包 yarn install 后出现 错误 : </p>
+</blockquote>
+<pre><code>Electron failed to install correctly , please delect node_modeles/electron and try installing again
+
+解决方法 :  手动删除node_modules文件夹，重新安装依赖包 cnpm install
+</code></pre><h2 id="安装完成文件树"><a href="#安装完成文件树" class="headerlink" title="安装完成文件树"></a>安装完成文件树</h2><pre><code>my-project
+├─ .electron-vue
+│  └─ &lt;build/development&gt;.js files
+├─ build
+│  └─ icons/
+├─ dist
+│  ├─ electron/
+│  └─ web/
+├─ node_modules/
+├─ src
+│  ├─ main
+│  │  ├─ index.dev.js
+│  │  └─ index.js
+│  ├─ renderer
+│  │  ├─ components/
+│  │  ├─ router/
+│  │  ├─ store/
+│  │  ├─ App.vue
+│  │  └─ main.js
+│  └─ index.ejs
+├─ static/
+├─ test
+│  ├─ e2e
+│  │  ├─ specs/
+│  │  ├─ index.js
+│  │  └─ utils.js
+│  ├─ unit
+│  │  ├─ specs/
+│  │  ├─ index.js
+│  │  └─ karma.config.js
+│  └─ .eslintrc
+├─ .babelrc
+├─ .eslintignore
+├─ .eslintrc.js
+├─ .gitignore
+├─ package.json
+└─ README.md
+</code></pre><h2 id="NPM-脚本"><a href="#NPM-脚本" class="headerlink" title="NPM 脚本"></a>NPM 脚本</h2><p>为了帮助n你消除开发过程中的冗余任务，请注意一些可用的 NPM 脚本。以下命令应该运行在项目的根目录下。当然，你可以使用 yarn run <command> 的方式运行下列任何命令。</p>
+<p><br></p>
+<pre><code>npm run build
+</code></pre><p>为了产品和打包来构建你的应用程序。更多信息可以在 构建你的应用程序 部分找到。</p>
+<pre><code>npm run dev
+</code></pre><p>在开发环境中运行程序</p>
+<pre><code>npm run lint
+</code></pre><p>静态分析所有在 src/ 和 test/ 下面的 JS 以及 Vue 组件文件。</p>
+<pre><code>npm run lint:fix
+</code></pre><p>静态分析所有在 src/ 和 test/ 下面的 JS 以及 Vue 组件文件并且尝试修复问题。</p>
+<pre><code>npm run pack
+</code></pre><p>同时运行 npm run pack:main 和 npm run pack:renderer。 虽然这些命令是可用的，但很少情况下，你需要手动执行此操作，因为 npm run build 将处理此步骤。</p>
+<pre><code>npm run pack:main
+</code></pre><p>运行 webpack 来打包 main 进程的源代码。</p>
+<pre><code>npm run pack:renderer
+</code></pre><p>运行 webpack 来打包 renderer 进程的源代码。</p>
+<pre><code>npm run unit
+</code></pre><p>运行使用了 Karma + Jasmine 的单元测试。更多信息请见 单元测试。</p>
+<pre><code>npm run e2e
+</code></pre><p>运行使用了 Spectron + Mocha 的端对端测试。更多信息请见 端对端测试。</p>
+<pre><code>npm test
+</code></pre><p>运行 npm run unit 和 npm run e2e. 更多信息请见 测试。</p>
+<h2 id="CSS-框架的使用"><a href="#CSS-框架的使用" class="headerlink" title="CSS 框架的使用"></a>CSS 框架的使用</h2><blockquote>
+<p>虽然这可能看起来并不明智，但我建议你使用 style-loader 将第三方 CSS 库导入 webpack，其实这一点我们已经为你做了。</p>
+</blockquote>
+<h3 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h3><p>假设你要为你的程序使用 bootstrap、bulma 或者 materialize。你可以仍旧像通常情况下一样，从 npm 安装你的库，而不是将资源附加到 index.ejs 上，我们将在我们的 JavaScript 中导入 CSS，具体在 src/renderer/main.js 中。</p>
+<p>例子</p>
+<p>让我们安装 bulma 如下 :</p>
+<pre><code>npm install bulma --save
+</code></pre><p>然后，在 src/renderer/main.js 里面加入这一行：</p>
+<pre><code>import &apos;bulma/css/bulma.css&apos;
+</code></pre><p>替代方案是, 你也可以在你的组件文件中引用 bulma。</p>
+<p><strong>App.vue</strong></p>
+<pre><code>&lt;style&gt;
+@import &quot;~bulma/css/bulma.css&quot;;
+&lt;/style&gt;
+</code></pre><p>现在，webpack 会为我们的应用程序加载 bulma，并使其在产品构建中可用.</p>
+<h2 id="预处理器的使用"><a href="#预处理器的使用" class="headerlink" title="预处理器的使用"></a>预处理器的使用</h2><p>将 vue-loader 与 webpack 一起使用的好处之一是能够直接在你的 Vue 组件文件中预处理你的 HTML/CSS/JS，而无需其他工作。</p>
+<h3 id="使用案例-1"><a href="#使用案例-1" class="headerlink" title="使用案例"></a>使用案例</h3><p>假设我们需要使用 Sass/SCSS 来预处理我们的 CSS。首先，我们需要安装正确的 webpack 加载器来处理这种语法。</p>
+<p><strong>安装 sass-loader</strong></p>
+<pre><code>npm install --save-dev sass-loader node-sass
+</code></pre><p>一旦安装了我们需要的加载器，一切就都差不多完成了。vue-loader 将神奇地做好其余的工作。现在我们可以轻松地将 lang=”sass” 或 lang=”scss” 添加到我们的 Vue 组件文件中。注意，我们还安装了 node-sass，因为它是 sass-loader 的依赖包。</p>
+<p>应用 lang 属性<br>所以…</p>
+<pre><code>&lt;style&gt;
+body {
+
+}
+&lt;/style&gt;
+... 现在变成了 ...
+
+&lt;style lang=&quot;scss&quot;&gt;
+body {
+
+}
+&lt;/style&gt;
+</code></pre><p>相同的原理适用于任何其他预处理器。那么，也许你的 JS 需要 coffeescript？只需安装 coffeescript-loader，并将属性 lang=“coffeescript” 应用到你的 \<script> 标签上。</p>
+<h2 id="Sass-SCSS-全局变量的使用"><a href="#Sass-SCSS-全局变量的使用" class="headerlink" title="Sass/SCSS 全局变量的使用"></a>Sass/SCSS 全局变量的使用</h2><p>当使用 Sass/SCSS 作为你的 CSS 语法时，在整个 Vue 组件文件中使用 全局变量 与 混合嵌套 是非常有益的。以下是此方法的实现。</p>
+<h3 id="使用案例-2"><a href="#使用案例-2" class="headerlink" title="使用案例"></a>使用案例</h3><p>此示例演示了如何将 globals.scss 应用于所有的 Vue 组件文件中。本文档假设你已经在开发环境中如上所述地设置了 sass-loader。</p>
+<p>定义你的全局变量</p>
+<pre><code>src/renderer/globals.scss
+
+$brand-primary: blue;
+$brand-accent: turquoise;
+直接向 node-sass 注入 globals.scss
+在 .electron-vue/webpack.renderer.config.js 里编辑 vue-loader 的配置
+
+loaders: {
+    sass: &apos;vue-style-loader!css-loader!sass-loader?indentedSyntax=1&amp;data=@import &quot;./src/renderer/globals&quot;&apos;,
+    scss: &apos;vue-style-loader!css-loader!sass-loader?data=@import &quot;./src/renderer/globals&quot;;&apos;
+}
+</code></pre><p>使用你的全局变量</p>
+<pre><code>SomeComponent.vue
+
+&lt;style lang=&quot;scss&quot;&gt;
+body { color: $brand-primary; }
+&lt;/style&gt;
+</code></pre><h2 id="静态资源的使用"><a href="#静态资源的使用" class="headerlink" title="静态资源的使用"></a>静态资源的使用</h2><p>electron-vue 提供了一个 __static 变量，它可以在开发和产品阶段生成 static/ 目录的路径。</p>
+<h3 id="Vue-组件里-src-标签的使用案例"><a href="#Vue-组件里-src-标签的使用案例" class="headerlink" title="Vue 组件里 src 标签的使用案例"></a>Vue 组件里 src 标签的使用案例</h3><p>假设我有一个组件需要下载一个图像，但是直到一些其他任务完成后这个图像的地址才能知道。简单起见，让我们用一个 data 变量来绑定图像的来源。</p>
+<p>SomeComponent.vue</p>
+<pre><code>&lt;template&gt;
+&lt;img v-bind:src=&quot;imageUrl&quot;&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    data () {
+    // 注意 路径的起始是 `static/`
+    return { imageUrl: &apos;static/imgs/unsplash.png&apos; }
+    }
+}
+&lt;/script&gt;
+</code></pre><p>此处，webpack 并不会捆绑图像 unsplash.png，并且应用程序可以看到 static/imgs/unsplash.png 目录里的资源。感谢 vue-loader 为我们完成了所有繁琐的工作。</p>
+<h2 id="JS-搭配-fs、path-和-static-的使用案例"><a href="#JS-搭配-fs、path-和-static-的使用案例" class="headerlink" title="JS 搭配 fs、path 和 __static 的使用案例"></a>JS 搭配 fs、path 和 __static 的使用案例</h2><p>假设我们有一个静态资源，我们需要使用 fs 将它读入到我们的应用程序中，但是我们如何在开发和产品阶段为 static/ 目录获得可靠的路径呢？electron-vue 提供了一个名为 __static 的全局变量，它将产生一个指向 static/ 目录的正确路径。以下是我们在开发和产品阶段如何使用它读取一个简单的文本文件。</p>
+<p><strong>static/someFile.txt</strong></p>
+<pre><code>foobar
+</code></pre><p><strong>SomeFile.js (main或renderer进程)</strong></p>
+<pre><code>import fs from &apos;fs&apos;
+import path from &apos;path&apos;
+
+let fileContents = fs.readFileSync(path.join(__static, &apos;/someFile.txt&apos;), &apos;utf8&apos;)
+
+console.log(fileContents)
+// =&gt; &quot;foobar&quot;
+</code></pre><p>请注意，在产品阶段，默认情况下，所有文件都包含 asar，因为它是被极力推荐的。因此，static/ 文件夹中的资源只能在 electron 内部访问，因为只有 electron 了解此行为。由此，如果你打算将文件分发给用户，例如在外部程序中打开文件，那么，首先你需要将这些资源从应用程序复制到用户的文档空间或桌面中。从那里，你可以使用 electron 的 API shell.openItem() 来打开这些资源。</p>
+<p>这种情况的一种替代方法，是配置 electron-packager 或 electron-builder，设置特定文件，用来 “解压缩” 在产品阶段的 asar 存档。electron-vue 并没有计划支持这种方法; 任何与此或与如何设定此事项相关的问题将被关闭。</p>
+<h2 id="构建你的应用程序"><a href="#构建你的应用程序" class="headerlink" title="构建你的应用程序"></a>构建你的应用程序</h2><p><strong>electron-packager</strong></p>
+<p>如果你刚开始制作 electron 应用程序或只需要创建简单的可执行文件，那么 electron-packager 就可以满足你的需求。</p>
+<p><strong>electron-builder</strong></p>
+<p>如果你正在寻找完整的安装程序、自动更新的支持、使用 Travis CI 和 AppVeyor 的 CI 构建、或本机 node 模块的自动重建，那么你会需要 electron-builder。</p>
+<h3 id="electron-builder"><a href="#electron-builder" class="headerlink" title="electron-builder"></a>electron-builder</h3><pre><code>yarn add electron-builder --dev
+</code></pre></script></p>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Electron/" rel="tag"><i class="fa fa-tag"></i> Electron</a>
+          
+            <a href="/tags/Vue/" rel="tag"><i class="fa fa-tag"></i> Vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/上传图片webapp总结.html" rel="next" title="上传图片在线处理webapp项目总结">
+                <i class="fa fa-chevron-left"></i> 上传图片在线处理webapp项目总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/EJS入手.html" rel="prev" title="EJS 用法">
+                EJS 用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="陈日亮" />
+          
+            <p class="site-author-name" itemprop="name">陈日亮</p>
+            <p class="site-description motion-element" itemprop="description">前端攻城狮，一心撸码，喜尝试新事物。</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ChenRiliang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:15980404746@139.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Electron-Vue上手"><span class="nav-number">1.</span> <span class="nav-text">Electron-Vue上手</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#起步"><span class="nav-number">1.1.</span> <span class="nav-text">起步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装完成文件树"><span class="nav-number">1.2.</span> <span class="nav-text">安装完成文件树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NPM-脚本"><span class="nav-number">1.3.</span> <span class="nav-text">NPM 脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-框架的使用"><span class="nav-number">1.4.</span> <span class="nav-text">CSS 框架的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用案例"><span class="nav-number">1.4.1.</span> <span class="nav-text">使用案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预处理器的使用"><span class="nav-number">1.5.</span> <span class="nav-text">预处理器的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用案例-1"><span class="nav-number">1.5.1.</span> <span class="nav-text">使用案例</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2015 &mdash; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-space-shuttle"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈日亮</span>
+
+  
+</div>
+
+<div>
+
+  <div class="powered-by">士不可以不弘毅</div>
+
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_uv"></span>次
+</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytek2XTX';
+      var conf = 'prod_bc17a91c7d37ecac9353eef637b62116';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("iaIQGrY0h7U7TScYlehjyCC8-gzGzoHsz", "qmiIOdPO4vU3jPjyXb7gB7DC");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script");
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

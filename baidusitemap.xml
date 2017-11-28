@@ -4,6 +4,132 @@
 
     
   <url>
+    <loc>http://crliang.top/%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87webapp%E6%80%BB%E7%BB%93.html</loc>
+    <lastmod>2017-11-28T14:36:29.093Z</lastmod>
+    <data>
+        <display>
+        <title>上传图片在线处理webapp项目总结</title>
+        <pubTime>2017-11-13T14:22:01.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+        <tag>HTML</tag>
+         
+         
+           
+             
+              <breadCrumb title="JavaScript" url="http://crliang.top/categories/JavaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://crliang.top/EJS%E5%85%A5%E6%89%8B.html</loc>
+    <lastmod>2017-11-28T14:30:17.069Z</lastmod>
+    <data>
+        <display>
+        <title>EJS 用法</title>
+        <pubTime>2017-11-23T13:22:01.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+        <tag>Ejs</tag>
+         
+         
+           
+             
+              <breadCrumb title="JavaScript" url="http://crliang.top/categories/JavaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://crliang.top/Javascript%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93.html</loc>
+    <lastmod>2017-11-28T14:29:44.791Z</lastmod>
+    <data>
+        <display>
+        <title>Javascript中函数的总结</title>
+        <pubTime>2015-09-20T09:28:51.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+         
+           
+             
+              <breadCrumb title="JavaScript" url="http://crliang.top/categories/JavaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://crliang.top/electron%E5%85%A5%E9%97%A8.html</loc>
+    <lastmod>2017-11-28T14:27:15.144Z</lastmod>
+    <data>
+        <display>
+        <title>Electron-Vue上手</title>
+        <pubTime>2017-11-23T13:22:01.000Z</pubTime>
+        
+        <tag>Electron</tag>
+         
+        <tag>Vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="JavaScript" url="http://crliang.top/categories/JavaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://crliang.top/photoClip+Jcanvas.html</loc>
+    <lastmod>2017-11-28T14:25:22.236Z</lastmod>
+    <data>
+        <display>
+        <title>PhotoClip.js</title>
+        <pubTime>2017-11-12T14:21:01.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+         
+           
+             
+              <breadCrumb title="JavaScript" url="http://crliang.top/categories/JavaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://crliang.top/canvas%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98.html</loc>
+    <lastmod>2017-11-28T14:20:50.028Z</lastmod>
+    <data>
+        <display>
+        <title>canvas跨域问题</title>
+        <pubTime>2017-11-11T15:28:14.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+         
+           
+             
+              <breadCrumb title="JavaScript" url="http://crliang.top/categories/JavaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://crliang.top/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B8%A9%E5%9D%91%E8%AE%B0.html</loc>
     <lastmod>2017-10-25T08:53:10.195Z</lastmod>
     <data>
@@ -226,26 +352,6 @@
         <tag>JavaScript</tag>
          
         <tag>DOM节点</tag>
-         
-         
-           
-             
-              <breadCrumb title="JavaScript" url="http://crliang.top/categories/JavaScript/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://crliang.top/Javascript%E5%87%BD%E6%95%B0%E6%80%BB%E7%BB%93.html</loc>
-    <lastmod>2017-09-21T13:18:06.624Z</lastmod>
-    <data>
-        <display>
-        <title>Javascript中函数的总结</title>
-        <pubTime>2015-09-20T09:28:51.000Z</pubTime>
-        
-        <tag>Javascript</tag>
          
          
            
