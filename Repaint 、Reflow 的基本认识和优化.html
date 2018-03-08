@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,程序员,web" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="回流(reflow)与重绘(repaint),很早就听过这两个名词，但是一直未曾深入了解，今天再次遇见，借此学习记录下来。  概念首先我们需要明白页面显示分为以下几个阶段:    1、解析HTML以构建DOM树：渲染引擎开始解析HTML文档，转换树中的html标签或js生成的标签到DOM节点，它被称为 – 内容树。  ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Repaint 、Reflow 的基本认识和优化">
+<meta property="og:url" content="http://crliang.top/Repaint 、Reflow 的基本认识和优化.html">
+<meta property="og:site_name" content="Chen&#39;s blog">
+<meta property="og:description" content="回流(reflow)与重绘(repaint),很早就听过这两个名词，但是一直未曾深入了解，今天再次遇见，借此学习记录下来。  概念首先我们需要明白页面显示分为以下几个阶段:    1、解析HTML以构建DOM树：渲染引擎开始解析HTML文档，转换树中的html标签或js生成的标签到DOM节点，它被称为 – 内容树。  2、构建渲染树：解析CSS（包括外部CSS文件和样式元素以及js生成的样式），">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-27T06:52:53.928Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Repaint 、Reflow 的基本认识和优化">
+<meta name="twitter:description" content="回流(reflow)与重绘(repaint),很早就听过这两个名词，但是一直未曾深入了解，今天再次遇见，借此学习记录下来。  概念首先我们需要明白页面显示分为以下几个阶段:    1、解析HTML以构建DOM树：渲染引擎开始解析HTML文档，转换树中的html标签或js生成的标签到DOM节点，它被称为 – 内容树。  2、构建渲染树：解析CSS（包括外部CSS文件和样式元素以及js生成的样式），">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://crliang.top/Repaint 、Reflow 的基本认识和优化.html"/>
+
+
+
+
+
+  <title>Repaint 、Reflow 的基本认识和优化 | Chen's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/ChenRiliang"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chen's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://crliang.top/Repaint 、Reflow 的基本认识和优化.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈日亮">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chen's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Repaint 、Reflow 的基本认识和优化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-11T23:28:14+08:00">
+                2018-02-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/Repaint 、Reflow 的基本认识和优化.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="Repaint 、Reflow 的基本认识和优化.html" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/Repaint 、Reflow 的基本认识和优化.html" class="leancloud_visitors" data-flag-title="Repaint 、Reflow 的基本认识和优化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>回流(reflow)与重绘(repaint),很早就听过这两个名词，但是一直未曾深入了解，今天再次遇见，借此学习记录下来。</p>
+</blockquote>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p><strong>首先我们需要明白页面显示分为以下几个阶段:</strong>  </p>
+<ul>
+<li><p>1、解析HTML以构建DOM树：渲染引擎开始解析HTML文档，转换树中的html标签或js生成的标签到DOM节点，它被称为 – 内容树。</p>
+</li>
+<li><p>2、构建渲染树：解析CSS（包括外部CSS文件和样式元素以及js生成的样式），根据CSS选择器计算出节点的样式，创建另一个树 —- 渲染树。</p>
+</li>
+<li><p>3、布局渲染树: 从根节点递归调用，计算每一个元素的大小、位置等，给每个节点所应该出现在屏幕上的精确坐标。</p>
+</li>
+<li><p>4、绘制渲染树: 遍历渲染树，每个节点将使用UI后端层来绘制。</p>
+</li>
+</ul>
+<p><strong>Reflow 就是“回流”，它的影响更大。它会在某一个DOM元素的位置发生改变后触发，而且它会重新计算所有元素的位置和在页面中的占有的面积，这样的话将会引起页面某一个部分甚至整个页面的重新渲染。改变某一个元素会影响它所有的子节点 (children)、祖先节点 (ancestors) 及兄弟节点(siblings)。</strong></p>
+<p><strong>Repaint 就是“重绘”，它会在你改变 DOM 元素的视觉效果时进行，改变布局时不会触发。比如，opacity,background-color,visibility和outline等都会触发，“重绘”的开销还是比较昂贵的，因为浏览器会在某一个DOM元素的视觉效果改变后去check这个DOM元素内的所有节点。</strong></p>
+<p><strong>重绘与回流都会导致体验上的不佳。另外，可以很明显看出，重绘的代价要比回流小，毕竟重绘只涉及样式的改变，不涉及到布局。</strong></p>
+<h1 id="引起Repain和Reflow的一些操作"><a href="#引起Repain和Reflow的一些操作" class="headerlink" title="引起Repain和Reflow的一些操作"></a>引起Repain和Reflow的一些操作</h1><p><strong>Reflow 的成本比 Repaint 的成本高得多的多。DOM Tree 里的每个结点都会有 reflow 方法，一个结点的 reflow 很有可能导致子结点，甚至父点以及同级结点的 reflow。在一些高性能的电脑上也许还没什么，但是如果 reflow 发生在手机上，那么这个过程是非常痛苦和耗电的。</strong></p>
+<p><strong>所以，下面这些动作有很大可能会是成本比较高的。</strong></p>
+<ul>
+<li><p>页面渲染初始化</p>
+</li>
+<li><p>添加、删除或者改变DOM元素的可见性时：使用JS去改变DOM元素时会触发Reflow。</p>
+</li>
+<li><p>render树变化，比如减少了padding</p>
+</li>
+<li><p>仅修改DOM元素的字体颜色（只有Repaint，因为不需要调整布局）</p>
+</li>
+<li><p>添加、删除或者改变CSS样式：直接改变CSS Style或者元素的class可能会影响布局，还有改变一个元素的宽度能够影响它所在的DOM节点中的所有元素，以及它周围的那些元素。</p>
+</li>
+<li><p>CSS3 动画（animation）和过渡（transition）: 动画的每一frame都会触发Reflow。</p>
+</li>
+<li><p>当你 Resize 窗口的时候（移动端没有这个问题），或是滚动的时候</p>
+</li>
+<li><p>当你修改网页的默认字体时(改变字体大小会引发回流)</p>
+</li>
+<li><p>display:none 会触发 reflow，而 visibility:hidden 只会触发 repaint，因为没有发现位置变化</p>
+</li>
+<li><p>使用offsetWidth和offsetHeight：这一点很特别，你读一个DOM的offsetWidth和offsetHeight属性同样会触发一下Reflow，因为这两个属性需要依赖一些元素去计算。</p>
+</li>
+<li><p>用户交互：用户可以通过:hover一下&lt; a &gt;链接，在input里面输入文字，拖动浏览器的大小，改变字体大小，更换样式表或者字体等都会触发reflow。</p>
+</li>
+</ul>
+<h1 id="如何优化"><a href="#如何优化" class="headerlink" title="如何优化"></a>如何优化</h1><p><strong>Reflow是不可避免的，只能将Reflow对性能的影响减到最小,给出下面几条建议：</strong></p>
+<h2 id="避免逐项更改样式。最好一次性更改style属性，或者将样式列表定义为class并一次性更改class属性"><a href="#避免逐项更改样式。最好一次性更改style属性，或者将样式列表定义为class并一次性更改class属性" class="headerlink" title="避免逐项更改样式。最好一次性更改style属性，或者将样式列表定义为class并一次性更改class属性"></a>避免逐项更改样式。最好一次性更改style属性，或者将样式列表定义为class并一次性更改class属性</h2><pre><code>// 不好的写法
+var left = 10,
+top = 10;
+el.style.left = left + &quot;px&quot;;
+el.style.top  = top  + &quot;px&quot;;
+// 推荐写法
+el.className += &quot; theclassname&quot;;
+</code></pre><h2 id="不要经常去访问计算后的样式，如果可以，可以先将这些信息缓存下来"><a href="#不要经常去访问计算后的样式，如果可以，可以先将这些信息缓存下来" class="headerlink" title="不要经常去访问计算后的样式，如果可以，可以先将这些信息缓存下来"></a>不要经常去访问计算后的样式，如果可以，可以先将这些信息缓存下来</h2><h2 id="把-DOM-离线后修改。如："><a href="#把-DOM-离线后修改。如：" class="headerlink" title="把 DOM 离线后修改。如："></a>把 DOM 离线后修改。如：</h2><pre><code>创建一个documentFragment去保持住我们要操作的dom
+
+克隆你需要进行操作的结点，进行操作后再将其与原始结点作交换
+</code></pre><h2 id="不要把-DOM-节点的属性值放在一个循环里当成循环里的变量。不然这会导致大量地读写这个结点的属性"><a href="#不要把-DOM-节点的属性值放在一个循环里当成循环里的变量。不然这会导致大量地读写这个结点的属性" class="headerlink" title="不要把 DOM 节点的属性值放在一个循环里当成循环里的变量。不然这会导致大量地读写这个结点的属性"></a>不要把 DOM 节点的属性值放在一个循环里当成循环里的变量。不然这会导致大量地读写这个结点的属性</h2><h2 id="设置元素的position为absolute或fixed"><a href="#设置元素的position为absolute或fixed" class="headerlink" title="设置元素的position为absolute或fixed"></a>设置元素的position为absolute或fixed</h2><p><strong>元素脱离标准流，也从DOM树结构中脱离出来，在需要reflow时只需要reflow自身与下级元素</strong></p>
+<p><strong>一般说来，如果对一个使用了绝对布局的dom进行操作，并不会导致大量的reflow，不过绝对布局丧失了许多灵活性，很少有人会使用绝对定位的方式进行主界面的布局。</strong></p>
+<h2 id="尽量不要用table布局"><a href="#尽量不要用table布局" class="headerlink" title="尽量不要用table布局"></a>尽量不要用table布局</h2><p><strong>table元素一旦触发reflow就会导致table里所有的其它元素 reflow。在适合用table的场合，可以设置table-layout为auto或fixed，这样可以让table一行一行的渲染，这种做法也是为了限制reflow的影响范围</strong></p>
+<h1 id="一些常用的优化手段"><a href="#一些常用的优化手段" class="headerlink" title="一些常用的优化手段"></a>一些常用的优化手段</h1><table class="table table-bordered table-striped table-condensed"><br>    <tr><br>        <td width="35">方面</td><br>        <td>方法</td><br>    </tr><br>    <tr><br>        <td>布局</td><br>        <td>不要用 inline style 或 table 布局，flexbox 布局也会给性能带来一些小困扰。inline style 会在 html 下载完后进行一次额外的 Reflow，table布局的开销远比其他 DOM 元素的布局开销要大。flexbox 的 item 会在 HTML 下载完成后改变尺寸。</td><br>    </tr><br>    <tr><br>        <td>简写CSS</td><br>        <td>尽量简写CSS，避免使用复杂的CSS选择器，使用 Unused CSS <a href="https://unused-css.com/）" target="_blank" rel="noopener">https://unused-css.com/）</a>, uCSS（<a href="https://github.com/oyvindeh/ucss）" target="_blank" rel="noopener">https://github.com/oyvindeh/ucss）</a>, gulp-uncss（<a href="https://github.com/ben-eb/gulp-uncss）可以有效的减少样式的定义和文件的大小。" target="_blank" rel="noopener">https://github.com/ben-eb/gulp-uncss）可以有效的减少样式的定义和文件的大小。</a></td><br>    </tr><br>    <tr><br>        <td>优化DOM</td><br>        <td>减少DOM的层级，减少DOM的数量，如果不需适配老浏览器，删掉一些无用的wrapper性质的DOM元素，总之越少越好。</td><br>    </tr><br>    <tr><br>        <td>慎改class</td><br>        <td>在一个DOM树中，尽可能改那些没有特别多子元素DOM的class，子元素少的可以改，多的不推荐。</td><br>    </tr><br>    <tr><br>        <td>避免复杂动画</td><br>        <td>删掉复杂的动画，运用动画的元素尽量是position:absolute或position:fixed的，这样会让他们脱离文档流，不去影响其他的元素。</td><br>    </tr><br>    <tr><br>        <td>善用display:none</td><br>        <td>display:none的元素不会引发Reflow和Repaint，可以在让这些元素在display之前进行一些诸如颜色、尺寸什么的改变。</td><br>    </tr><br>    <tr><br>        <td>优化DOM</td><br>        <td>减少DOM的层级，减少DOM的数量，如果不需适配老浏览器，删掉一些无用的wrapper性质的DOM元素，总之越少越好。</td><br>    </tr><br>    <tr><br>        <td>批量更新元素</td><br>        <td>将状态写入一个类中，用JQ直接给元素添加或删除这个类，而不是直接通过方法来修改元素样式状态。</td><br>    </tr><br>    <tr><br>        <td>避免大量DOM互相影响</td><br>        <td>比如Tabs这种场景，如果你点击一个Tab会显示它控制的区块，显示的那个区块会影响其他的区块，这样可能会引起Reflow，因为它们的高度不一样，可以通过定个高度来优化这种场景。</td><br>    </tr><br>     <tr><br>        <td>性能永远比酷炫重要</td><br>        <td>记住一个原则，你网页的动画再牛逼，性能还是第一位的，如果每一帧移动1个像素会造成你的页面卡顿，那宁愿每一帧移动10像素让动画的帧变得迟钝一些，也不要让页面的性能降下来。</td><br>    </tr><br></table>  
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/HTML公共部分的复用.html" rel="next" title="HTML公共部分的复用">
+                <i class="fa fa-chevron-left"></i> HTML公共部分的复用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/JavaScript深入继承.html" rel="prev" title="JavaScript深入继承">
+                JavaScript深入继承 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.jpg"
+              alt="陈日亮" />
+          
+            <p class="site-author-name" itemprop="name">陈日亮</p>
+            <p class="site-description motion-element" itemprop="description">前端攻城狮，一心撸码，喜尝试新事物。</p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ChenRiliang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:15980404746@139.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引起Repain和Reflow的一些操作"><span class="nav-number">2.</span> <span class="nav-text">引起Repain和Reflow的一些操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何优化"><span class="nav-number">3.</span> <span class="nav-text">如何优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#避免逐项更改样式。最好一次性更改style属性，或者将样式列表定义为class并一次性更改class属性"><span class="nav-number">3.1.</span> <span class="nav-text">避免逐项更改样式。最好一次性更改style属性，或者将样式列表定义为class并一次性更改class属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不要经常去访问计算后的样式，如果可以，可以先将这些信息缓存下来"><span class="nav-number">3.2.</span> <span class="nav-text">不要经常去访问计算后的样式，如果可以，可以先将这些信息缓存下来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把-DOM-离线后修改。如："><span class="nav-number">3.3.</span> <span class="nav-text">把 DOM 离线后修改。如：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不要把-DOM-节点的属性值放在一个循环里当成循环里的变量。不然这会导致大量地读写这个结点的属性"><span class="nav-number">3.4.</span> <span class="nav-text">不要把 DOM 节点的属性值放在一个循环里当成循环里的变量。不然这会导致大量地读写这个结点的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置元素的position为absolute或fixed"><span class="nav-number">3.5.</span> <span class="nav-text">设置元素的position为absolute或fixed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尽量不要用table布局"><span class="nav-number">3.6.</span> <span class="nav-text">尽量不要用table布局</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些常用的优化手段"><span class="nav-number">4.</span> <span class="nav-text">一些常用的优化手段</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy;  2015 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-space-shuttle"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈日亮</span>
+
+  
+</div>
+
+<div>
+
+  <div class="powered-by">士不可以不弘毅</div>
+
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_uv"></span>次
+</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytek2XTX';
+      var conf = 'prod_bc17a91c7d37ecac9353eef637b62116';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("iaIQGrY0h7U7TScYlehjyCC8-gzGzoHsz", "qmiIOdPO4vU3jPjyXb7gB7DC");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script");
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
