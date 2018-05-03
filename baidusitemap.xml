@@ -4,6 +4,66 @@
 
     
   <url>
+    <loc>http://crliang.top/SVG%E8%BD%ACcanvas%20-%20canvg.html</loc>
+    <lastmod>2018-05-03T13:05:29.402Z</lastmod>
+    <data>
+        <display>
+        <title>SVG转canvas解决方案 - canvg</title>
+        <pubTime>2018-05-02T06:19:24.000Z</pubTime>
+        
+        <tag>JavaScript</tag>
+         
+        <tag>SVG</tag>
+         
+        <tag>CANVAS</tag>
+         
+         
+           
+             
+              <breadCrumb title="SVG" url="http://crliang.top/categories/SVG/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://crliang.top/SVG%E8%BD%ACcanvas%EF%BC%8C%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2.html</loc>
+    <lastmod>2018-05-03T12:56:59.790Z</lastmod>
+    <data>
+        <display>
+        <title>SVG转canvas，设置背景颜色</title>
+        <pubTime>2018-05-02T06:19:24.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="SVG" url="http://crliang.top/categories/SVG/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://crliang.top/SVG%E8%BD%ACcanvas%E6%8F%90%E7%A4%BAcanvas%E8%A2%AB%E6%B1%A1%E6%9F%93.html</loc>
+    <lastmod>2018-05-03T12:49:45.568Z</lastmod>
+    <data>
+        <display>
+        <title>SVG转canvas提示canvas被污染</title>
+        <pubTime>2018-05-01T06:18:24.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="SVG" url="http://crliang.top/categories/SVG/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://crliang.top/H5%E5%85%BC%E5%AE%B9%E6%80%A7%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html</loc>
     <lastmod>2018-03-08T13:39:56.444Z</lastmod>
     <data>
@@ -144,12 +204,12 @@
 
     
   <url>
-    <loc>http://crliang.top/Repaint%20%E3%80%81Reflow%20%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%86%E5%92%8C%E4%BC%98%E5%8C%96.html</loc>
+    <loc>http://crliang.top/JavaScript%E6%B7%B1%E5%85%A5%E7%BB%A7%E6%89%BF.html</loc>
     <lastmod>2018-01-27T06:52:53.928Z</lastmod>
     <data>
         <display>
-        <title>Repaint 、Reflow 的基本认识和优化</title>
-        <pubTime>2018-02-11T15:28:14.000Z</pubTime>
+        <title>JavaScript深入继承</title>
+        <pubTime>2018-02-12T15:28:14.000Z</pubTime>
         
          
            
@@ -162,12 +222,12 @@
 
     
   <url>
-    <loc>http://crliang.top/JavaScript%E6%B7%B1%E5%85%A5%E7%BB%A7%E6%89%BF.html</loc>
+    <loc>http://crliang.top/Repaint%20%E3%80%81Reflow%20%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%86%E5%92%8C%E4%BC%98%E5%8C%96.html</loc>
     <lastmod>2018-01-27T06:52:53.928Z</lastmod>
     <data>
         <display>
-        <title>JavaScript深入继承</title>
-        <pubTime>2018-02-12T15:28:14.000Z</pubTime>
+        <title>Repaint 、Reflow 的基本认识和优化</title>
+        <pubTime>2018-02-11T15:28:14.000Z</pubTime>
         
          
            

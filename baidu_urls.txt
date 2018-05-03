@@ -1,3 +1,6 @@
+http://crliang.top/SVG转canvas - canvg.html
+http://crliang.top/SVG转canvas，设置背景颜色.html
+http://crliang.top/SVG转canvas提示canvas被污染.html
 http://crliang.top/上传图片生成缩略图展示.html
 http://crliang.top/JavaScript深入继承.html
 http://crliang.top/Repaint 、Reflow 的基本认识和优化.html
@@ -5,9 +8,9 @@ http://crliang.top/HTML公共部分的复用.html
 http://crliang.top/vuex.html
 http://crliang.top/electron打包成exe文件.html
 http://crliang.top/利用grunt打包Electron项目.html
-http://crliang.top/electron之win.loadURL.html
-http://crliang.top/EJS入手.html
 http://crliang.top/electron入门.html
+http://crliang.top/EJS入手.html
+http://crliang.top/electron之win.loadURL.html
 http://crliang.top/上传图片webapp总结.html
 http://crliang.top/photoClip+Jcanvas.html
 http://crliang.top/canvas跨域问题.html
